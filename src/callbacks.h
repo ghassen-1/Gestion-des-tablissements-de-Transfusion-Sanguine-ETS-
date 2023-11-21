@@ -36,3 +36,21 @@ on_treeview1_row_activated             (GtkTreeView     *treeview,
 void
 on_button_supprimer_gh_clicked         (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_button_deconnexion_gh_clicked       (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+
+void
+on_button_connexion_clicked            (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_par_region_clicked           (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_capacite_clicked             (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+//////////////////////////////////////////////////////////////////////////////////

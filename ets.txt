@@ -2,3 +2,4 @@
  2 2 2 Gafsa   2 
  23 rabta 100 Tunis   20851806 
  3 z 1 Bizerte   55 
+ 12 esprit 3 Ariana   123 

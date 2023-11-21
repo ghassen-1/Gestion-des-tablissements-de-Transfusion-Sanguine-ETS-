@@ -146,3 +146,45 @@ on_button_supprimer_gh_clicked         (GtkButton       *button,
 
 }
 
+
+void
+on_button_deconnexion_gh_clicked       (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+
+	GtkWidget *window_gestionETS=lookup_widget(objet_graphique,"window_gestionETS");
+	gtk_widget_destroy(window_gestionETS);
+	GtkWidget *window_bienvenue=create_window_bienvenue();
+	gtk_widget_show (window_bienvenue);
+
+}
+
+
+void
+on_button_connexion_clicked            (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+GtkWidget *window_bienvenue=lookup_widget(objet_graphique,"window_bienvenue");
+	gtk_widget_destroy(window_bienvenue);
+	GtkWidget *window_gestionETS=create_window_gestionETS();
+	gtk_widget_show (window_gestionETS);
+}
+
+
+void
+on_button_par_region_clicked           (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_button_capacite_clicked             (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////

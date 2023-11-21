@@ -37,10 +37,10 @@ create_window_bienvenue (void)
   GtkWidget *label1;
   GtkWidget *eventbox1;
   GtkWidget *label5;
-  GtkWidget *button_connexion;
   GtkWidget *image1;
   GtkWidget *comboboxentry1;
   GtkWidget *label2;
+  GtkWidget *button_connexion;
 
   window_bienvenue = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window_bienvenue), _("Bienvenue"));
@@ -81,11 +81,6 @@ create_window_bienvenue (void)
   gtk_container_add (GTK_CONTAINER (eventbox1), label5);
   gtk_widget_set_size_request (label5, 272, 16);
 
-  button_connexion = gtk_button_new_with_mnemonic (_("Connexion"));
-  gtk_widget_show (button_connexion);
-  gtk_fixed_put (GTK_FIXED (fixed1), button_connexion, 280, 328);
-  gtk_widget_set_size_request (button_connexion, 128, 40);
-
   image1 = create_pixmap (window_bienvenue, "SNG LOG.png");
   gtk_widget_show (image1);
   gtk_fixed_put (GTK_FIXED (fixed1), image1, 360, 0);
@@ -101,6 +96,15 @@ create_window_bienvenue (void)
   gtk_fixed_put (GTK_FIXED (fixed1), label2, 144, 232);
   gtk_widget_set_size_request (label2, 73, 16);
 
+  button_connexion = gtk_button_new_with_mnemonic (_("Connexion"));
+  gtk_widget_show (button_connexion);
+  gtk_fixed_put (GTK_FIXED (fixed1), button_connexion, 280, 328);
+  gtk_widget_set_size_request (button_connexion, 128, 40);
+
+  g_signal_connect ((gpointer) button_connexion, "clicked",
+                    G_CALLBACK (on_button_connexion_clicked),
+                    NULL);
+
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (window_bienvenue, window_bienvenue, "window_bienvenue");
   GLADE_HOOKUP_OBJECT (window_bienvenue, fixed1, "fixed1");
@@ -110,10 +114,10 @@ create_window_bienvenue (void)
   GLADE_HOOKUP_OBJECT (window_bienvenue, label1, "label1");
   GLADE_HOOKUP_OBJECT (window_bienvenue, eventbox1, "eventbox1");
   GLADE_HOOKUP_OBJECT (window_bienvenue, label5, "label5");
-  GLADE_HOOKUP_OBJECT (window_bienvenue, button_connexion, "button_connexion");
   GLADE_HOOKUP_OBJECT (window_bienvenue, image1, "image1");
   GLADE_HOOKUP_OBJECT (window_bienvenue, comboboxentry1, "comboboxentry1");
   GLADE_HOOKUP_OBJECT (window_bienvenue, label2, "label2");
+  GLADE_HOOKUP_OBJECT (window_bienvenue, button_connexion, "button_connexion");
 
   return window_bienvenue;
 }
@@ -123,21 +127,9 @@ create_window_gestionETS (void)
 {
   GtkWidget *window_gestionETS;
   GtkWidget *fixed2;
-  GtkWidget *checkbutton2;
   GtkWidget *entry_recherche_gh;
   GtkWidget *label6;
-  GtkWidget *check_box_capacit___gh;
   GtkWidget *treeview1;
-  GtkWidget *button_supprimer_gh;
-  GtkWidget *alignment5;
-  GtkWidget *hbox5;
-  GtkWidget *image6;
-  GtkWidget *label14;
-  GtkWidget *button_deconnexion_gh;
-  GtkWidget *alignment8;
-  GtkWidget *hbox8;
-  GtkWidget *image9;
-  GtkWidget *label21;
   GtkWidget *button_recherche_gh;
   GtkWidget *image31;
   GtkWidget *button_ajouter_gh;
@@ -155,6 +147,18 @@ create_window_gestionETS (void)
   GtkWidget *hbox29;
   GtkWidget *image32;
   GtkWidget *label178;
+  GtkWidget *button_supprimer_gh;
+  GtkWidget *alignment5;
+  GtkWidget *hbox5;
+  GtkWidget *image6;
+  GtkWidget *label14;
+  GtkWidget *button_par_region;
+  GtkWidget *button_capacite;
+  GtkWidget *button_deconnexion_gh;
+  GtkWidget *alignment8;
+  GtkWidget *hbox8;
+  GtkWidget *image9;
+  GtkWidget *label21;
 
   window_gestionETS = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window_gestionETS), _("GestionETS"));
@@ -162,11 +166,6 @@ create_window_gestionETS (void)
   fixed2 = gtk_fixed_new ();
   gtk_widget_show (fixed2);
   gtk_container_add (GTK_CONTAINER (window_gestionETS), fixed2);
-
-  checkbutton2 = gtk_check_button_new_with_mnemonic (_("r\303\251gion"));
-  gtk_widget_show (checkbutton2);
-  gtk_fixed_put (GTK_FIXED (fixed2), checkbutton2, 552, 64);
-  gtk_widget_set_size_request (checkbutton2, 118, 24);
 
   entry_recherche_gh = gtk_entry_new ();
   gtk_widget_show (entry_recherche_gh);
@@ -179,57 +178,10 @@ create_window_gestionETS (void)
   gtk_fixed_put (GTK_FIXED (fixed2), label6, 56, 24);
   gtk_widget_set_size_request (label6, 152, 16);
 
-  check_box_capacit___gh = gtk_check_button_new_with_mnemonic (_("Capacit\303\251"));
-  gtk_widget_show (check_box_capacit___gh);
-  gtk_fixed_put (GTK_FIXED (fixed2), check_box_capacit___gh, 456, 64);
-  gtk_widget_set_size_request (check_box_capacit___gh, 104, 24);
-
   treeview1 = gtk_tree_view_new ();
   gtk_widget_show (treeview1);
   gtk_fixed_put (GTK_FIXED (fixed2), treeview1, 96, 112);
   gtk_widget_set_size_request (treeview1, 536, 224);
-
-  button_supprimer_gh = gtk_button_new ();
-  gtk_widget_show (button_supprimer_gh);
-  gtk_fixed_put (GTK_FIXED (fixed2), button_supprimer_gh, 520, 368);
-  gtk_widget_set_size_request (button_supprimer_gh, 120, 32);
-
-  alignment5 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment5);
-  gtk_container_add (GTK_CONTAINER (button_supprimer_gh), alignment5);
-
-  hbox5 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox5);
-  gtk_container_add (GTK_CONTAINER (alignment5), hbox5);
-
-  image6 = gtk_image_new_from_stock ("gtk-delete", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image6);
-  gtk_box_pack_start (GTK_BOX (hbox5), image6, FALSE, FALSE, 0);
-
-  label14 = gtk_label_new_with_mnemonic (_("Supprimer"));
-  gtk_widget_show (label14);
-  gtk_box_pack_start (GTK_BOX (hbox5), label14, FALSE, FALSE, 0);
-
-  button_deconnexion_gh = gtk_button_new ();
-  gtk_widget_show (button_deconnexion_gh);
-  gtk_fixed_put (GTK_FIXED (fixed2), button_deconnexion_gh, 552, 8);
-  gtk_widget_set_size_request (button_deconnexion_gh, 120, 32);
-
-  alignment8 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment8);
-  gtk_container_add (GTK_CONTAINER (button_deconnexion_gh), alignment8);
-
-  hbox8 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox8);
-  gtk_container_add (GTK_CONTAINER (alignment8), hbox8);
-
-  image9 = gtk_image_new_from_stock ("gtk-stop", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image9);
-  gtk_box_pack_start (GTK_BOX (hbox8), image9, FALSE, FALSE, 0);
-
-  label21 = gtk_label_new_with_mnemonic (_("Deconnexion"));
-  gtk_widget_show (label21);
-  gtk_box_pack_start (GTK_BOX (hbox8), label21, FALSE, FALSE, 0);
 
   button_recherche_gh = gtk_button_new ();
   gtk_widget_show (button_recherche_gh);
@@ -303,6 +255,58 @@ create_window_gestionETS (void)
   gtk_widget_show (label178);
   gtk_box_pack_start (GTK_BOX (hbox29), label178, FALSE, FALSE, 0);
 
+  button_supprimer_gh = gtk_button_new ();
+  gtk_widget_show (button_supprimer_gh);
+  gtk_fixed_put (GTK_FIXED (fixed2), button_supprimer_gh, 520, 368);
+  gtk_widget_set_size_request (button_supprimer_gh, 120, 32);
+
+  alignment5 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment5);
+  gtk_container_add (GTK_CONTAINER (button_supprimer_gh), alignment5);
+
+  hbox5 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox5);
+  gtk_container_add (GTK_CONTAINER (alignment5), hbox5);
+
+  image6 = gtk_image_new_from_stock ("gtk-delete", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image6);
+  gtk_box_pack_start (GTK_BOX (hbox5), image6, FALSE, FALSE, 0);
+
+  label14 = gtk_label_new_with_mnemonic (_("Supprimer"));
+  gtk_widget_show (label14);
+  gtk_box_pack_start (GTK_BOX (hbox5), label14, FALSE, FALSE, 0);
+
+  button_par_region = gtk_button_new_with_mnemonic (_("R\303\251gion"));
+  gtk_widget_show (button_par_region);
+  gtk_fixed_put (GTK_FIXED (fixed2), button_par_region, 464, 72);
+  gtk_widget_set_size_request (button_par_region, 74, 29);
+
+  button_capacite = gtk_button_new_with_mnemonic (_("Capacit\303\251"));
+  gtk_widget_show (button_capacite);
+  gtk_fixed_put (GTK_FIXED (fixed2), button_capacite, 568, 72);
+  gtk_widget_set_size_request (button_capacite, 74, 29);
+
+  button_deconnexion_gh = gtk_button_new ();
+  gtk_widget_show (button_deconnexion_gh);
+  gtk_fixed_put (GTK_FIXED (fixed2), button_deconnexion_gh, 552, 8);
+  gtk_widget_set_size_request (button_deconnexion_gh, 120, 32);
+
+  alignment8 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment8);
+  gtk_container_add (GTK_CONTAINER (button_deconnexion_gh), alignment8);
+
+  hbox8 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox8);
+  gtk_container_add (GTK_CONTAINER (alignment8), hbox8);
+
+  image9 = gtk_image_new_from_stock ("gtk-stop", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image9);
+  gtk_box_pack_start (GTK_BOX (hbox8), image9, FALSE, FALSE, 0);
+
+  label21 = gtk_label_new_with_mnemonic (_("Deconnexion"));
+  gtk_widget_show (label21);
+  gtk_box_pack_start (GTK_BOX (hbox8), label21, FALSE, FALSE, 0);
+
   g_signal_connect ((gpointer) treeview1, "row_activated",
                     G_CALLBACK (on_treeview1_row_activated),
                     NULL);
@@ -315,25 +319,19 @@ create_window_gestionETS (void)
   g_signal_connect ((gpointer) button_afficher, "clicked",
                     G_CALLBACK (on_button_afficher_clicked),
                     NULL);
+  g_signal_connect ((gpointer) button_supprimer_gh, "clicked",
+                    G_CALLBACK (on_button_supprimer_gh_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) button_deconnexion_gh, "clicked",
+                    G_CALLBACK (on_button_deconnexion_gh_clicked),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (window_gestionETS, window_gestionETS, "window_gestionETS");
   GLADE_HOOKUP_OBJECT (window_gestionETS, fixed2, "fixed2");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, checkbutton2, "checkbutton2");
   GLADE_HOOKUP_OBJECT (window_gestionETS, entry_recherche_gh, "entry_recherche_gh");
   GLADE_HOOKUP_OBJECT (window_gestionETS, label6, "label6");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, check_box_capacit___gh, "check_box_capacit___gh");
   GLADE_HOOKUP_OBJECT (window_gestionETS, treeview1, "treeview1");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, button_supprimer_gh, "button_supprimer_gh");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, alignment5, "alignment5");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, hbox5, "hbox5");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, image6, "image6");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, label14, "label14");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, button_deconnexion_gh, "button_deconnexion_gh");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, alignment8, "alignment8");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, hbox8, "hbox8");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, image9, "image9");
-  GLADE_HOOKUP_OBJECT (window_gestionETS, label21, "label21");
   GLADE_HOOKUP_OBJECT (window_gestionETS, button_recherche_gh, "button_recherche_gh");
   GLADE_HOOKUP_OBJECT (window_gestionETS, image31, "image31");
   GLADE_HOOKUP_OBJECT (window_gestionETS, button_ajouter_gh, "button_ajouter_gh");
@@ -351,6 +349,18 @@ create_window_gestionETS (void)
   GLADE_HOOKUP_OBJECT (window_gestionETS, hbox29, "hbox29");
   GLADE_HOOKUP_OBJECT (window_gestionETS, image32, "image32");
   GLADE_HOOKUP_OBJECT (window_gestionETS, label178, "label178");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, button_supprimer_gh, "button_supprimer_gh");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, alignment5, "alignment5");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, hbox5, "hbox5");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, image6, "image6");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, label14, "label14");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, button_par_region, "button_par_region");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, button_capacite, "button_capacite");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, button_deconnexion_gh, "button_deconnexion_gh");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, alignment8, "alignment8");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, hbox8, "hbox8");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, image9, "image9");
+  GLADE_HOOKUP_OBJECT (window_gestionETS, label21, "label21");
 
   return window_gestionETS;
 }
