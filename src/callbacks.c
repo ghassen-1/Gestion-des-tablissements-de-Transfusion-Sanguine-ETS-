@@ -118,7 +118,7 @@ on_button_afficher_clicked        (GtkWidget *objet_graphique, gpointer user_dat
 	//supprimer_ets(treeview1);    fonction supprimer
 	afficher_ets(treeview1);
 }
-
+gchar* selected_id;
 void
 on_treeview1_row_activated             (GtkTreeView     *treeview,
                                         GtkTreePath     *path,
@@ -127,7 +127,6 @@ on_treeview1_row_activated             (GtkTreeView     *treeview,
 {
     GtkTreeIter iter;
     gchar* id;
-	gchar* selected_id;
     GtkTreeModel *model = gtk_tree_view_get_model(treeview);
 
     if (gtk_tree_model_get_iter(model, &iter, path)) {
@@ -138,12 +137,27 @@ on_treeview1_row_activated             (GtkTreeView     *treeview,
 
 }
 
-
 void
-on_button_supprimer_gh_clicked         (GtkButton       *button,
+on_button_supprimer_gh_clicked         (GtkWidget       *objet_graphique,
                                         gpointer         user_data)
 {
 
+
+GtkWidget *window_confirmer_supprimer = create_window_confirmer_supprimer();
+
+    // Check if window_supprimer_ETS is NULL before showing it
+    if (window_confirmer_supprimer == NULL) {
+        g_print("Error: window_confirmer_supprimer_utilisateurs is NULL\n");
+        return;
+    }
+    g_signal_connect(window_confirmer_supprimer, "show", G_CALLBACK(on_window_confirmer_supprimer_shown), NULL);
+
+    gtk_widget_show(window_confirmer_supprimer);
+}
+void on_window_confirmer_supprimer_shown(GtkWidget *objet, gpointer user_data)
+{
+    GtkWidget *output = lookup_widget(objet, "label_ID_supp_ets");
+    gtk_label_set_text(GTK_LABEL(output), selected_id);
 }
 
 
@@ -175,16 +189,186 @@ void
 on_button_par_region_clicked           (GtkWidget       *objet_graphique,
                                         gpointer         user_data)
 {
+	ets p;
+    GtkWidget *input1;
+    input1 = lookup_widget(objet_graphique, "comboboxentry9");
+
+    strcpy(p.region, gtk_combo_box_get_active_text(GTK_COMBO_BOX(input1)));
+
+    GtkWidget *treeview1, *w1;
+    GtkWidget *window_gestionETS;
+    w1 = lookup_widget(objet_graphique, "window_gestionETS");
+    window_gestionETS = create_window_gestionETS();
+    gtk_widget_show(window_gestionETS);
+    gtk_widget_hide(w1);
+    treeview1 = lookup_widget(window_gestionETS, "treeview1");
+
+    // Check if the tree view is null before attempting to clear it
+    if (treeview1 != NULL) {
+        // Clear the tree view
+        //vider_ets(treeview1);
+
+        // Load data for the specified region into the tree view
+        afficher_par_region(treeview1, p.region);
+    } else {
+        // Handle the case where the tree view is null (e.g., it wasn't found)
+        g_print("Error: Tree view not found.\n");
+    }
+
+}
+
+
+
+
+
+/////////////////////////////////////supprimer/////////////////////////////////////////////////
+
+ int confirmer_ets[]={0};
+void
+on_button_confirmer_supp_ets_clicked   (GtkWidget       *objet_graphique,
+                                        gpointer         user_data){
+    GtkWidget *treeview1;
+    GtkWidget *window_gestionETS = create_window_gestionETS();
+
+    // Check if window_utilisateurs is NULL before proceeding
+    if (window_gestionETS == NULL) {
+        g_print("Error: window_utilisateurs is NULL\n");
+        return;
+    }
+
+    treeview1 = lookup_widget(window_gestionETS, "treeview1");
+
+    ets p;
+    strcpy(p.id, selected_id);
+
+    if (confirmer_ets[0] == 1) {
+
+        supprimer_ets(p);
+        // Update the tree view after deleting the user
+        afficher_ets(treeview1);
+
+        GtkWidget *window_confirmer_supprimer = lookup_widget(objet_graphique, "window_confirmer_supprimer");
+        gtk_widget_destroy(window_confirmer_supprimer);
+        confirmer_ets[0] = 0;
+    }
+
+}
+
+void
+on_button_annuler_supp_ets_clicked     (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+	GtkWidget *window_confirmer_supprimer=lookup_widget(objet_graphique,"window_confirmer_supprimer");
+	gtk_widget_destroy(window_confirmer_supprimer);
+	GtkWidget *window_gestionETS=create_window_gestionETS();
+	gtk_widget_show (window_gestionETS);
+}
+
+
+
+void
+on_cancelbutton_supp_clicked          (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+
 
 }
 
 
 void
-on_button_capacite_clicked             (GtkWidget       *objet_graphique,
+on_okbutton_supp_clicked               (GtkWidget       *objet_graphique,
                                         gpointer         user_data)
 {
 
 }
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void
+on_button_capacitee_clicked  		(GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+
+}
+
+//-----------------------------test----------------------------------
+int radio=2;
+void
+on_radiobutton_capacite_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+	if(gtk_toggle_button_get_active(GTK_RADIO_BUTTON (togglebutton)))
+radio=1;
+
+}
+
+
+void
+on_radiobutton_region_toggled          (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if(gtk_toggle_button_get_active(GTK_RADIO_BUTTON (togglebutton)))
+radio=2;
+}
+
+
+void
+on_button_test_affiche_clicked         (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+if (radio==1){
+	GtkWidget *treeview1,*w1;
+	GtkWidget *window_gestionETS;
+	w1=lookup_widget(objet_graphique,"window_gestionETS");
+	window_gestionETS=create_window_gestionETS();
+	gtk_widget_show(window_gestionETS);
+	gtk_widget_hide(w1);
+	treeview1=lookup_widget(window_gestionETS,"treeview1");
+	//vider_ets(treeview_ets);
+	afficher_trie_par_capacite_desc(treeview1);
+}
+else if (radio==2){
+
+}
+}
+
+
+void
+on_checkbutton_supp_ets_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if (gtk_toggle_button_get_active(togglebutton))
+confirmer_ets[0]=1;
+}
+
+
+
+
+void
+on_button_recherche_gh_clicked         (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)     /// recherche ets 
+{ 
+  
+   
+    char recherche_ets[100]; // Assuming a maximum length of 100 characters for the search term
+    GtkWidget *input1;
+    GtkWidget *treeview1;
+
+    // Assuming that "window_Gestion_ETS" is the name of your main window
+    treeview1 = lookup_widget(GTK_WIDGET(gtk_widget_get_toplevel(objet_graphique)), "treeview1");
+
+    input1 = lookup_widget(GTK_WIDGET(gtk_widget_get_toplevel(objet_graphique)), "entry_recherche_gh");
+
+    strcpy(recherche_ets, gtk_entry_get_text(GTK_ENTRY(input1)));
+
+    search_ets(treeview1, recherche_ets);
+
+}
+
+void
+on_buttonRefresh_clicked     (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)            
+{
+
+}
+

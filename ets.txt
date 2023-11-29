@@ -1,5 +1,4 @@
- 1 1 1 Ariana   1 
- 2 2 2 Gafsa   2 
- 23 rabta 100 Tunis   20851806 
- 3 z 1 Bizerte   55 
- 12 esprit 3 Ariana   123 
+ 1 ibnrochd 85 Ariana   75455454 
+ 4 ibnsina 29 Bizerte   29481545 
+ 21 razi 19 Tunis   98485451 
+ 96 salahazyz 20 Tunis   59251524 

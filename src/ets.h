@@ -14,10 +14,12 @@ typedef struct {
 
 int ajouter(ets p);
 //int modifier(int id, ets nouv, char * filename);
-//void supprimer_ets(ets p);
-//ets chercher(int id, char * filename);
+void supprimer_ets(ets p);
+void search_ets(GtkWidget *liste, const char *search_term);
 void afficher_ets(GtkWidget *liste);
 
 void afficher_par_region(GtkWidget *liste, const char *region) ;
+void afficher_trie_par_capacite_desc(GtkWidget *liste);
+int compare_by_capacity_desc(const void *a, const void *b);
 
 #endif
