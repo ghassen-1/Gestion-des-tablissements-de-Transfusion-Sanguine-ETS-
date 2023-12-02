@@ -52,8 +52,8 @@ main (int argc, char *argv[])
    * (except popup menus), just so that you see something after building
    * the project. Delete any components that you don't want shown initially.
    */
-  window_bienvenue = create_window_bienvenue ();
-  gtk_widget_show (window_bienvenue);
+  window_gestion_fiche_donneur = create_window_gestion_fiche_donneur ();
+  gtk_widget_show (window_gestion_fiche_donneur); 
   //window_gestionETS = create_window_gestionETS ();
   //gtk_widget_show (window_gestionETS);
  // window_ajouterETS = create_window_ajouterETS ();

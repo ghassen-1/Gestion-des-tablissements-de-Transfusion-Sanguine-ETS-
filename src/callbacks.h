@@ -9,6 +9,8 @@ void
 on_button_modifier_gh_clicked          (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
 
+void load_ets_data(const char *id, GtkWidget *window_window_modifier);
+
 void
 on_button_annuler_ajouter_clicked      (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
@@ -99,3 +101,93 @@ on_button_recherche_gh_clicked         (GtkWidget       *objet_graphique,
 void
 on_buttonRefresh_clicked               (GtkWidget       *objet_graphique,
                                         gpointer         user_data) ;
+
+
+void
+on_button_modifier_appliquer_gh_clicked
+                                        (GtkWidget *objet_graphique, gpointer user_data);
+///////////////////////////////////////////aziz tache//////////////////////////////////////////////////////
+void
+on_button_ajouter_clicked              (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_button16_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_button15_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_radiobutton1_toggled                (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_radiobutton2_toggled                (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_treeview2_row_activated             (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_afficher_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_supprimer_clicked                   (GtkWidget      *objet,
+                                        gpointer         user_data);
+
+void
+on_modifier_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+void load_donneur_data(const char *id, GtkWidget *window_modifier_fiche_donneur) ;
+
+
+
+void
+on_button45_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_radiobutton3_toggled                (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_radiobutton4_toggled                (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_button44_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_button11_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_button12_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_button47_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_button48_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_checkbutton3_toggled                (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_button46_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_button49_clicked                    (GtkWidget       *objet,
+                                        gpointer         user_data);
