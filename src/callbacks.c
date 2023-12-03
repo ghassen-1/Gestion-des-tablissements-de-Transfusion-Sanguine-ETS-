@@ -3,7 +3,7 @@
 #endif
 #include <gdk/gdk.h>
 
-
+#include <stdbool.h>
 #include <pango/pangocairo.h>
 #include <gtk/gtk.h>
 #include <string.h>
@@ -16,6 +16,8 @@
 #include "ets.c"
 #include "donneur.c"
 #include "donneur.h"
+#include "login.h"
+#include "login.c"
 gchar* selected_id;
 int x=1;
 int oui[]={0};
@@ -225,15 +227,63 @@ on_button_deconnexion_gh_clicked       (GtkWidget       *objet_graphique,
 }
 
 
-void
-on_button_connexion_clicked            (GtkWidget       *objet_graphique,
-                                        gpointer         user_data)
-{
-GtkWidget *window_bienvenue=lookup_widget(objet_graphique,"window_bienvenue");
-	gtk_widget_destroy(window_bienvenue);
-	GtkWidget *window_gestionETS=create_window_gestionETS();
-	gtk_widget_show (window_gestionETS);
+
+
+
+// Gestionnaire de clic pour le bouton de connexion
+void on_button_connexion_clicked(GtkWidget *objet_graphique, gpointer user_data) {
+    GtkWidget *combobox_role = lookup_widget(objet_graphique, "comboboxentry_login");
+    GtkWidget *entry_pass = lookup_widget(objet_graphique, "entry_pass");
+    GtkWidget *window_gestionETS = create_window_gestionETS();
+    GtkWidget *window_admin = create_window_admin();
+    GtkWidget *window_gestion_fiche_donneur = create_window_gestion_fiche_donneur();
+    GtkWidget *output = lookup_widget(objet_graphique, "label_login");
+   
+  
+
+    const gchar *role_text = gtk_combo_box_get_active_text(GTK_COMBO_BOX(combobox_role));
+    const gchar *password = gtk_entry_get_text(GTK_ENTRY(entry_pass));
+
+    if (role_text != NULL && password != NULL) {
+        bool connexionReussie = verifierConnexion(role_text, password);
+
+        if (connexionReussie) {
+            // Afficher la fenêtre correspondant au rôle de l'utilisateur
+            gtk_label_set_text(GTK_LABEL(output), "Connexion réussie");
+
+            if (strcmp(role_text, "admin") == 0 ) {
+                gtk_widget_show(window_admin);
+            }
+            if (strcmp(role_text, "infermier") == 0){
+                gtk_widget_show(window_gestion_fiche_donneur);
+            }
+            if (strcmp(role_text, "medecin_biologiste") == 0){
+                gtk_widget_show(window_gestion_fiche_donneur);
+            }
+            if (strcmp(role_text, "responsable_ets") == 0){
+                gtk_widget_show(window_gestion_fiche_donneur);
+            }
+		
+            // Cacher la fenêtre de connexion
+            GtkWidget *window_bienvenue = GTK_WIDGET(gtk_widget_get_ancestor(objet_graphique, GTK_TYPE_WINDOW));
+            if (window_bienvenue != NULL) {
+                gtk_widget_hide(window_bienvenue);
+            }
+        } else {
+	   
+            gtk_label_set_text(GTK_LABEL(output), "Échec de la connexion !!!");
+        }
+    } else {
+        gtk_label_set_text(GTK_LABEL(output), "Veuillez remplir tous les champs !!!");
+    }
 }
+
+
+ 		
+
+
+
+
 
 
 void
@@ -859,5 +909,64 @@ window_gestion_fiche_donneur=lookup_widget(objet,"window_gestion_fiche_donneur")
 window_gestion_fiche_donneur=create_window_gestion_fiche_donneur();
 
 gtk_widget_show(window_gestion_fiche_donneur);
+}
+
+//---------------------------------pageadmin-------------------------------------
+void
+on_button_deconnecteradmin_clicked     (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+
+        GtkWidget *window_admin=lookup_widget(objet_graphique,"window_admin");
+	gtk_widget_hide(window_admin);
+	GtkWidget *window_bienvenue=create_window_bienvenue();
+	gtk_widget_show (window_bienvenue);
+
+}
+
+
+void
+on_button_admin_fichedonneur_clicked   (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+	GtkWidget *window_admin=lookup_widget(objet_graphique,"window_admin");
+	gtk_widget_hide(window_admin);
+	GtkWidget *window_gestion_fiche_donneur=create_window_gestion_fiche_donneur();
+	gtk_widget_show (window_gestion_fiche_donneur);
+}
+
+
+void
+on_button_admin_user_clicked           (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_button_admin_RDV_clicked            (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_button_admin_poch_clicked           (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_button_admin_ets_clicked            (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+        GtkWidget *window_admin=lookup_widget(objet_graphique,"window_admin");
+	gtk_widget_hide(window_admin);
+	GtkWidget *window_gestionETS=create_window_gestionETS();
+	gtk_widget_show (window_gestionETS);
 }
 

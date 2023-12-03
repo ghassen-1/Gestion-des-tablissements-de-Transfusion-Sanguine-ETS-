@@ -26,3 +26,4 @@ GtkWidget* create_window_confirmer_supp_utilisateur (void);
 GtkWidget* create_window_pourcentage_utilisateur (void);
 GtkWidget* create_window_confirmer_supprimer (void);
 GtkWidget* create_window_verification_list_RDV (void);
+GtkWidget* create_window_admin (void);

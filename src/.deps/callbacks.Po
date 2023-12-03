@@ -378,8 +378,9 @@ callbacks.o: callbacks.c /usr/include/stdc-predef.h ../config.h \
  /usr/include/gtk-2.0/gdk/gdkspawn.h \
  /usr/include/gtk-2.0/gdk/gdktestutils.h \
  /usr/include/gtk-2.0/gdk/gdkwindow.h \
- /usr/include/gtk-2.0/gdk/gdkvisual.h /usr/include/gtk-2.0/gtk/gtk.h \
- /usr/include/gtk-2.0/gtk/gtkaboutdialog.h \
+ /usr/include/gtk-2.0/gdk/gdkvisual.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h \
+ /usr/include/gtk-2.0/gtk/gtk.h /usr/include/gtk-2.0/gtk/gtkaboutdialog.h \
  /usr/include/gtk-2.0/gtk/gtkdialog.h \
  /usr/include/gtk-2.0/gtk/gtkwindow.h \
  /usr/include/gtk-2.0/gtk/gtkaccelgroup.h \
@@ -606,7 +607,7 @@ callbacks.o: callbacks.c /usr/include/stdc-predef.h ../config.h \
  /usr/include/gtk-2.0/gtk/gtktipsquery.h callbacks.h interface.h \
  support.h /usr/include/libintl.h /usr/include/locale.h \
  /usr/include/x86_64-linux-gnu/bits/locale.h ets.h ets.c donneur.c \
- donneur.h
+ donneur.h login.h login.c
 
 /usr/include/stdc-predef.h:
 
@@ -1456,6 +1457,8 @@ callbacks.o: callbacks.c /usr/include/stdc-predef.h ../config.h \
 
 /usr/include/gtk-2.0/gdk/gdkvisual.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h:
+
 /usr/include/gtk-2.0/gtk/gtk.h:
 
 /usr/include/gtk-2.0/gtk/gtkaboutdialog.h:
@@ -1967,3 +1970,7 @@ ets.c:
 donneur.c:
 
 donneur.h:
+
+login.h:
+
+login.c:

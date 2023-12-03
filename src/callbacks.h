@@ -191,3 +191,27 @@ on_button46_clicked                    (GtkWidget       *objet,
 void
 on_button49_clicked                    (GtkWidget       *objet,
                                         gpointer         user_data);
+
+void
+on_button_deconnecteradmin_clicked     (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_admin_fichedonneur_clicked   (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_admin_user_clicked           (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_admin_RDV_clicked            (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_admin_poch_clicked           (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_admin_ets_clicked            (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
