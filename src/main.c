@@ -35,6 +35,7 @@ main (int argc, char *argv[])
   GtkWidget *window_confirmation_RDV;
   GtkWidget *window_modifier_RDV;
   GtkWidget *affichage_don_;
+  GtkWidget *window2;
 
 #ifdef ENABLE_NLS
   bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -53,48 +54,8 @@ main (int argc, char *argv[])
    * the project. Delete any components that you don't want shown initially.
    */
 	window_bienvenue = create_window_bienvenue ();
- 	 gtk_widget_show (window_bienvenue);
-  //window_gestion_fiche_donneur = create_window_gestion_fiche_donneur ();
-  //gtk_widget_show (window_gestion_fiche_donneur); 
-  //window_gestionETS = create_window_gestionETS ();
-  //gtk_widget_show (window_gestionETS);
- // window_ajouterETS = create_window_ajouterETS ();
-  //gtk_widget_show (window_ajouterETS);
-  //window_modifier = create_window_modifier ();
-  //gtk_widget_show (window_modifier);
-  /*
-  window_gestion_fiche_donneur = create_window_gestion_fiche_donneur ();
-  gtk_widget_show (window_gestion_fiche_donneur);
-  window_ajouter_fiche_donneur = create_window_ajouter_fiche_donneur ();
-  gtk_widget_show (window_ajouter_fiche_donneur);
-  window_modifier_fiche_donneur = create_window_modifier_fiche_donneur ();
-  gtk_widget_show (window_modifier_fiche_donneur);
-  window_list_RDV = create_window_list_RDV ();
-  gtk_widget_show (window_list_RDV);
-  window_moyenne_RDV = create_window_moyenne_RDV ();
-  gtk_widget_show (window_moyenne_RDV);
-  window_gestion_utilisateur = create_window_gestion_utilisateur ();
-  gtk_widget_show (window_gestion_utilisateur);
-  window_ajouter_utilisateur = create_window_ajouter_utilisateur ();
-  gtk_widget_show (window_ajouter_utilisateur);
-  window_modifier_utilisateur = create_window_modifier_utilisateur ();
-  gtk_widget_show (window_modifier_utilisateur);
-  window_gestion_don = create_window_gestion_don ();
-  gtk_widget_show (window_gestion_don);
-  window_filtrage = create_window_filtrage ();
-  gtk_widget_show (window_filtrage);
-  window_gestion_RDV = create_window_gestion_RDV ();
-  gtk_widget_show (window_gestion_RDV);
-  window_ajouter_RDV = create_window_ajouter_RDV ();
-  gtk_widget_show (window_ajouter_RDV);
-  window_liste_horraire = create_window_liste_horraire ();
-  gtk_widget_show (window_liste_horraire);
-  window_confirmation_RDV = create_window_confirmation_RDV ();
-  gtk_widget_show (window_confirmation_RDV);
-  window_modifier_RDV = create_window_modifier_RDV ();
-  gtk_widget_show (window_modifier_RDV);
-  affichage_don_ = create_affichage_don_ ();
-  gtk_widget_show (affichage_don_); */
+ 	gtk_widget_show (window_bienvenue);
+  
 	
   gtk_main ();
   return 0;

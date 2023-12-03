@@ -215,3 +215,133 @@ on_button_admin_poch_clicked           (GtkWidget       *objet_graphique,
 void
 on_button_admin_ets_clicked            (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
+
+void
+on_ajouter_don_clicked                 (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_annuler_don_clicked                 (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_suivant_don_clicked                 (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_afficher_don_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_retour2_don_clicked                 (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_affecter_don_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_buttonact_clicked                   (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_chercher_don_clicked                (GtkWidget       *button,
+                                        gpointer         user_data);
+
+void load_personne_data(const char *id, GtkWidget *window5);
+
+void
+on_modifier_don_clicked                (GtkButton       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_appliquer_don_clicked               (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_annuler2_don_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_button_supp2_clicked                (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_retour_supp2_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_supprimer_don_clicked               (GtkWidget       *button,
+                                        gpointer         user_data);
+
+void on_window6_shown(GtkWidget *objet, gpointer user_data);
+
+void
+on_treeview1_don_row_activated         (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_checkbutton1_don_toggled            (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+
+
+
+void
+on_treeview1_dons_row_activated        (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_treeview1_don_row_activated         (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_checkbutton1_don_toggled            (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+/////////////////////////////////////////////////////////user//////////////////////////////user////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void
+on_button_ajouter_bs_clicked           (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_enregistrer_ajouter_bs_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_quitter_ajouter_bs_clicked   (GtkWidget *objet_graphique, gpointer user_data);
+
+void
+on_radiobutton_homme_ajouter_bs_toggled
+                                        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_radiobutton_femme_ajouter_bs_toggled
+                                        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_button_aff_utilisateur_bs_clicked   (GtkWidget *objet_graphique, gpointer user_data);
+
+void
+on_treeview_u_row_activated            (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_button_supprimer_bs_clicked         (GtkWidget *objet_graphique, gpointer user_data);
+
+
+
+
+void
+on_button_sup_sup_bs_clicked           (GtkWidget *objet_graphique, gpointer user_data);
+
