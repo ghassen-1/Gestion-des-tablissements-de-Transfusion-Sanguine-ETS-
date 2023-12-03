@@ -5,19 +5,6 @@
 Ce projet est une application de gestion des demandes de poches de sang pour les établissements médicaux. L'application est développée en langage C avec l'utilisation de GTK pour l'interface graphique.
 
 
-Donner son sang, c&#39;est venir en aide :
-- Aux malades (cancer, leucémie, SIDA...)
-- Aux opérés,
-- Aux grands brûlés,
-- Aux femmes enceintes en cas d&#39;accouchements difficiles,
-- Aux hémophiles,
-- etc,..
-Les établissements de transfusion sanguine exercent une mission de santé publique
-dans le cadre du service public de la transfusion sanguine.
-Dans le cadre de projet C, nous envisageons de réaliser une application qui a pour but
-de gérer les établissements de transfusion sanguine placés dans les différentes villes de
-la Tunisie.
-
 ## Objectif du Projet
 Ce projet a pour objectif de mettre en place une application qui permet d’administrer les
 établissements de transfusion sanguine afin de gérer les opérations de transfert de sang
