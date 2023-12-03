@@ -1,5 +1,5 @@
 
-*******************************« Gestion des Établissements de Transfusion Sanguine (ETS)»******************************
+******************************« Gestion des Établissements de Transfusion Sanguine (ETS)»******************************
 
 
 Ce projet est une application de gestion des demandes de poches de sang pour les établissements médicaux. L'application est développée en langage C avec l'utilisation de GTK pour l'interface graphique.
