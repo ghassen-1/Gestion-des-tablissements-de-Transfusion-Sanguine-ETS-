@@ -1,6 +1,5 @@
-Cahier des charges du projet C
 
-« Gestion des Établissements de Transfusion Sanguine (ETS)»
+*******************************« Gestion des Établissements de Transfusion Sanguine (ETS)»******************************
 
 I. Présentation du projet
 Donner son sang, c&#39;est sauver une vie. La transfusion sanguine est indispensable et
