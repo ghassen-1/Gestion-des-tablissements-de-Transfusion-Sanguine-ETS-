@@ -19,6 +19,6 @@ void afficher_user(GtkWidget *liste);
 void supprimer_user(user p);
 user get_user_data(const char *cin);
 int modifier_utilisateur(user newp);
-void calculate_gender_percentage(double *percentage_men, double *percentage_women);
 int get_Role_index(const char *role);
+void calculate_gender_percentage(double *percentage_men, double *percentage_women);
 #endif

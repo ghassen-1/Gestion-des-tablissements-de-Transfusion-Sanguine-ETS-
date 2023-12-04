@@ -4,12 +4,16 @@
 
 // Définition des utilisateurs
 static Utilisateur utilisateurs[] = {
-    {"admin", "admin"},
-    {"user", "user"},
-    {"infermier", "infermier"}, 
-    {"medecin_biologiste", "medecin"},
-    {"responsable_ets", "ets"},
+    {"Admin", "admin"},
+    {"Infermier", "infermier"}, 
+    {"Medecin_biologiste", "medecin"},
+    {"Responsable_ets", "ets"},
     // Ajoutez d'autres utilisateurs si nécessaire
+
+   /*   Admin
+        Infermier
+        Medecin_biologiste
+        Responsable_ets  */
 };
 
 // Fonction pour vérifier les informations de connexion

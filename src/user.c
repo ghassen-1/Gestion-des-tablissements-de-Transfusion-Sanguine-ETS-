@@ -81,7 +81,9 @@ renderer = gtk_cell_renderer_text_new ();
 	gtk_tree_view_append_column (GTK_TREE_VIEW (liste),column);
 renderer = gtk_cell_renderer_text_new ();
 	column = gtk_tree_view_column_new_with_attributes(" num",renderer,"text",NUM_u,NULL);
+gtk_tree_view_append_column (GTK_TREE_VIEW (liste),column);
 renderer = gtk_cell_renderer_text_new ();
+
 	column = gtk_tree_view_column_new_with_attributes(" role",renderer,"text",ROLE_u,NULL);
 	gtk_tree_view_append_column (GTK_TREE_VIEW (liste),column);
 
@@ -182,6 +184,20 @@ int modifier_utilisateur(user newp) {
 }
 
 
+int get_Role_index(const char *role) {
+    const char *role_values[] = {
+         "Admin","Responsable_ETS","Médecin", "Infermier"
+    };
+
+    for (int i = 0; i < sizeof(role_values) / sizeof(role_values[0]); i++) {
+        if (strcmp(role, role_values[i]) == 0) {
+            return i;
+        }
+    }
+
+    return -1;  // Return -1 if not found (you can choose another special value if you prefer)
+}
+
 void calculate_gender_percentage(double *percentage_men, double *percentage_women) {
  FILE *f;
     char sexe[10];
@@ -218,17 +234,3 @@ void calculate_gender_percentage(double *percentage_men, double *percentage_wome
     }
 }
 
-
-int get_Role_index(const char *role) {
-    const char *role_values[] = {
-        "Responsable_ETS", "Admin", "Médecin", "Infermier"
-    };
-
-    for (int i = 0; i < sizeof(role_values) / sizeof(role_values[0]); i++) {
-        if (strcmp(role, role_values[i]) == 0) {
-            return i;
-        }
-    }
-
-    return -1;  // Return -1 if not found (you can choose another special value if you prefer)
-}

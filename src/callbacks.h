@@ -335,13 +335,73 @@ on_treeview_u_row_activated            (GtkTreeView     *treeview,
                                         GtkTreePath     *path,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data);
-
+void on_window_confirmer_supprimer_utilisateur_shown(GtkWidget *objet, gpointer user_data);
 void
 on_button_supprimer_bs_clicked         (GtkWidget *objet_graphique, gpointer user_data);
 
 
+void
+on_checkbutton_sup_conf_bs_toggled     (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
 
 
 void
 on_button_sup_sup_bs_clicked           (GtkWidget *objet_graphique, gpointer user_data);
 
+//----------------button retour pages---------------------
+void
+on_button_admin_don_clicked            (GtkWidget *objet_graphique, gpointer user_data);
+
+void
+on_retour_don_clicked                  (GtkWidget *objet_graphique, gpointer user_data);
+
+void
+on_button_retour_fichedonneur_versadmin_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+
+void
+on_button_annulersup_userr_clicked     (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+void
+on_radiobutton_femme_modifier_bs_toggled
+                                        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_radiobutton_homme_modifier_bs_toggled
+                                        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+void load_user_data(const char *cin, GtkWidget *window_modifier_utilisateur);
+void
+on_button_modifier_bs_clicked          (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+
+
+
+void
+on_button_enregistrer_modifier_bs_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_quitter_modifier_bs_clicked  (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void on_window_pourcentage_utilisateur_shown(GtkWidget *widget, gpointer user_data);
+
+void
+on_button_poucentage_utilisateur_clicked
+                                        (GtkWidget       *objet,
+                                        gpointer         user_data);
+
+void
+on_button_quitter_pourcentage_utilisateur_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_retouradmin_user_clicked     (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);

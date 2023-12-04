@@ -195,6 +195,7 @@ on_treeview1_row_activated             (GtkTreeView     *treeview,
         // You can now call a function to open the deletion window or store this ID for later use.
     }
 
+
 }
 
 void
@@ -245,6 +246,7 @@ void on_button_connexion_clicked(GtkWidget *objet_graphique, gpointer user_data)
     GtkWidget *window_admin = create_window_admin();
     GtkWidget *window_gestion_fiche_donneur = create_window_gestion_fiche_donneur();
     GtkWidget *output = lookup_widget(objet_graphique, "label_login");
+    GtkWidget *window3 = create_window3();
    
   
 
@@ -258,16 +260,16 @@ void on_button_connexion_clicked(GtkWidget *objet_graphique, gpointer user_data)
             // Afficher la fenêtre correspondant au rôle de l'utilisateur
             gtk_label_set_text(GTK_LABEL(output), "Connexion réussie");
 
-            if (strcmp(role_text, "admin") == 0 ) {
+            if (strcmp(role_text, "Admin") == 0 ) {
                 gtk_widget_show(window_admin);
             }
-            if (strcmp(role_text, "infermier") == 0){
-                gtk_widget_show(window_gestion_fiche_donneur);
+            if (strcmp(role_text, "Infermier") == 0){
+                gtk_widget_show(window_gestion_fiche_donneur);    
             }
-            if (strcmp(role_text, "medecin_biologiste") == 0){
-                gtk_widget_show(window_gestion_fiche_donneur);
+            if (strcmp(role_text, "Medecin_biologiste") == 0){
+                gtk_widget_show(window3);
             }
-            if (strcmp(role_text, "responsable_ets") == 0){
+            if (strcmp(role_text, "Responsable_ets") == 0){
                 gtk_widget_show(window_gestion_fiche_donneur);
             }
 		
@@ -494,7 +496,7 @@ void on_button_modifier_appliquer_gh_clicked(GtkWidget *objet_graphique, gpointe
 
     // Retrieve the new data from the modified widgets
    
-
+    GtkWidget *treeview1;
     GtkWidget *input2 = lookup_widget(objet_graphique, "entry_nomETS_modifier_gh");
     GtkWidget *input3 = lookup_widget(objet_graphique, "spinbutton_modif_ets");
     GtkWidget *input4 = lookup_widget(objet_graphique, "combobox_region_modifier_gh");
@@ -511,6 +513,19 @@ void on_button_modifier_appliquer_gh_clicked(GtkWidget *objet_graphique, gpointe
 
     // Assuming you have the new data ready, call modifier_ets function
     modifier_ets(get_ets_data(selected_id), modified_ets);
+GtkWidget *window_modifier;
+GtkWidget *window_gestionETS;
+
+window_modifier=lookup_widget(objet_graphique,"window_modifier");
+
+gtk_widget_destroy(window_modifier);
+window_gestionETS=lookup_widget(objet_graphique,"window_gestionETS");
+window_gestionETS=create_window_gestionETS();
+
+gtk_widget_show(window_gestionETS);
+
+treeview1 = lookup_widget(window_gestionETS, "treeview1");
+afficher_ets(treeview1);
 
     // Now, you can show or do any other necessary operations
 }
@@ -770,7 +785,7 @@ GtkWidget *input1, *input2, *input3, *input4, *input5, *input6, *input7, *input8
     if(x==1)
     strcpy(modifiedDonneur.sexe,"Homme");
     if(x==2)
-    strcpy(modifiedDonneur.sexe,"Femme"); /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    strcpy(modifiedDonneur.sexe,"Femme"); 
     strcpy(modifiedDonneur.id, selected_id);
     strcpy(modifiedDonneur.nom, gtk_entry_get_text(GTK_ENTRY(input1)));
     strcpy(modifiedDonneur.prenom, gtk_entry_get_text(GTK_ENTRY(input2)));
@@ -947,6 +962,10 @@ void
 on_button_admin_user_clicked           (GtkWidget       *objet_graphique,
                                         gpointer         user_data)
 {
+ GtkWidget *window_admin=lookup_widget(objet_graphique,"window_admin");
+	gtk_widget_hide(window_admin);
+	GtkWidget *window_gestion_utilisateur=create_window_gestion_utilisateur();
+	gtk_widget_show (window_gestion_utilisateur);
 
 }
 
@@ -1206,7 +1225,7 @@ on_appliquer_don_clicked               (GtkWidget       *objet_graphique,
 
     // Retrieve the new data from the modified widgets
    
-
+    GtkWidget *input1 = lookup_widget(objet_graphique, "entry8_don");
     GtkWidget *input2 = lookup_widget(objet_graphique, "entry9_don");
     GtkWidget *input3 = lookup_widget(objet_graphique, "entry10_don");
     GtkWidget *input4 = lookup_widget(objet_graphique, "entry11_don");
@@ -1216,13 +1235,13 @@ on_appliquer_don_clicked               (GtkWidget       *objet_graphique,
     GtkWidget *input8 = lookup_widget(objet_graphique, "combobox2_don");
 
     personne modified_personne;
-    strcpy(modified_personne.id, selected_id);
+    strcpy(modified_personne.id, gtk_entry_get_text(GTK_ENTRY(input1)));
     strcpy(modified_personne.nom, gtk_entry_get_text(GTK_ENTRY(input2)));
     strcpy(modified_personne.prenom, gtk_entry_get_text(GTK_ENTRY(input3)));
     strcpy(modified_personne.quantite, gtk_entry_get_text(GTK_ENTRY(input4)));
     //strcpy(modified_personne.type_sang, gtk_combo_box_get_active_text(GTK_COMBO_BOX(input8)));
     
-sprintf(modified_personne.mois, "%d", gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(input5)));
+    sprintf(modified_personne.mois, "%d", gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(input5)));
     sprintf(modified_personne.jour, "%d", gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(input6)));
     sprintf(modified_personne.annee, "%d", gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(input7)));
 
@@ -1326,14 +1345,6 @@ on_supprimer_don_clicked               (GtkWidget       *button,
 
 
 
-void
-on_treeview1_dons_row_activated        (GtkTreeView     *treeview,
-                                        GtkTreePath     *path,
-                                        GtkTreeViewColumn *column,
-                                        gpointer         user_data)
-{
-
-}
 
 
 void
@@ -1342,7 +1353,13 @@ on_treeview1_don_row_activated         (GtkTreeView     *treeview,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data)
 {
+GtkTreeIter iter;
+    gchar* id;
+    GtkTreeModel *model = gtk_tree_view_get_model(treeview);
 
+    if (gtk_tree_model_get_iter(model, &iter, path)) {
+        gtk_tree_model_get(GTK_LIST_STORE(model), &iter, 0, &id, -1);
+       selected_id = strdup(id);}
 }
 
 
@@ -1350,10 +1367,12 @@ void
 on_checkbutton1_don_toggled            (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-
+if (gtk_toggle_button_get_active(togglebutton))
+confirmer_personne[0]=1;
 }
 /////////////////////////////////user/////////////////////:bilel//////////////////////////////////
 
+gchar* selected_cin;
 void
 on_button_ajouter_bs_clicked           (GtkWidget       *objet_graphique,
                                         gpointer         user_data)
@@ -1362,6 +1381,7 @@ GtkWidget *window_Gestion_utilisateur=lookup_widget(objet_graphique,"window_Gest
 	gtk_widget_destroy(window_Gestion_utilisateur);
 	GtkWidget *window_ajouter_utilisateur=create_window_ajouter_utilisateur();
 	gtk_widget_show (window_ajouter_utilisateur);
+       
 
 }
 
@@ -1406,17 +1426,6 @@ strcpy(p.role,gtk_combo_box_get_active_text(GTK_COMBO_BOX(input9)));
 }
 
 
-
-
-void
-on_button_quitter_ajouter_bs_clicked   (GtkWidget *objet_graphique, gpointer user_data)
-{
-GtkWidget *window_ajouter_utilisateur=lookup_widget(objet_graphique,"window_ajouter_utilisateur");
-	gtk_widget_destroy(window_ajouter_utilisateur);
-	GtkWidget *window_gestion_utilisateur=create_window_gestion_utilisateur();
-	gtk_widget_show (window_gestion_utilisateur);
-}
-
 void
 on_radiobutton_homme_ajouter_bs_toggled
                                         (GtkToggleButton *togglebutton,
@@ -1438,6 +1447,17 @@ if(gtk_toggle_button_get_active(GTK_RADIO_BUTTON (togglebutton)))
 
 
 void
+on_button_quitter_ajouter_bs_clicked   (GtkWidget *objet_graphique, gpointer user_data)
+{
+GtkWidget *window_ajouter_utilisateur=lookup_widget(objet_graphique,"window_ajouter_utilisateur");
+	gtk_widget_destroy(window_ajouter_utilisateur);
+	GtkWidget *window_gestion_utilisateur=create_window_gestion_utilisateur();
+	gtk_widget_show (window_gestion_utilisateur);
+}
+
+
+
+void
 on_button_aff_utilisateur_bs_clicked   (GtkWidget *objet_graphique, gpointer user_data)
 {
 GtkWidget *treeview_user,*w1;
@@ -1452,7 +1472,6 @@ GtkWidget *treeview_user,*w1;
 
 }
 
-gchar* selected_cin;
 
 void
 on_treeview_u_row_activated            (GtkTreeView     *treeview,
@@ -1470,13 +1489,32 @@ on_treeview_u_row_activated            (GtkTreeView     *treeview,
         // You can now call a function to open the deletion window or store this ID for later use.
     }
 }
+void on_window_confirmer_supprimer_utilisateur_shown(GtkWidget *objet, gpointer user_data)
+{
+    GtkWidget *output = lookup_widget(objet, "label_cin_sup_user");
+    gtk_label_set_text(GTK_LABEL(output), selected_cin);
+}
 void
 on_button_supprimer_bs_clicked         (GtkWidget *objet_graphique, gpointer user_data)
 {
 
+// Create the confirmation window
+    GtkWidget *window_confirmer_supprimer_utilisateur = create_window_confirmer_supprimer_utilisateur();
 
+    // Check if the creation of the window was successful
+    if (window_confirmer_supprimer_utilisateur == NULL) {
+        g_print("Error: window_confirmer_supprimer_utilisateur is NULL\n");
+        return;
+    }
+
+    // Connect the "show" signal to the callback function
+    g_signal_connect(window_confirmer_supprimer_utilisateur, "show", G_CALLBACK(on_window_confirmer_supprimer_utilisateur_shown), NULL);
+
+    // Show the confirmation window
+    gtk_widget_show(window_confirmer_supprimer_utilisateur);
 
 }
+
 
 
 void
@@ -1515,3 +1553,237 @@ on_button_sup_sup_bs_clicked           (GtkWidget *objet_graphique, gpointer use
     // }
     
 }
+void
+on_checkbutton_sup_conf_bs_toggled     (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{if (gtk_toggle_button_get_active(togglebutton))
+confirmer_user[0]=1;
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+void
+on_button_admin_don_clicked            (GtkWidget *objet_graphique, gpointer user_data)
+{
+        GtkWidget *window_admin=lookup_widget(objet_graphique,"window_admin");
+	gtk_widget_hide(window_admin);
+	GtkWidget *window3=create_window3();
+	gtk_widget_show (window3);
+}
+
+
+void
+on_retour_don_clicked                  (GtkWidget *objet_graphique, gpointer user_data)
+{
+ GtkWidget *window3=lookup_widget(objet_graphique,"window3");
+	gtk_widget_hide(window3);
+	GtkWidget *window_bienvenue=create_window_bienvenue();
+	gtk_widget_show (window_bienvenue);
+}
+
+
+void
+on_button_retour_fichedonneur_versadmin_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+GtkWidget *window_gestion_fiche_donneur=lookup_widget(objet_graphique,"window_gestion_fiche_donneur");
+	gtk_widget_hide(window_gestion_fiche_donneur);
+	GtkWidget *window_bienvenue=create_window_bienvenue();
+	gtk_widget_show (window_bienvenue);
+}
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+void
+on_button_annulersup_userr_clicked     (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+GtkWidget *window_confirmer_supprimer_utilisateur=lookup_widget(objet_graphique,"window_confirmer_supprimer_utilisateur");
+	gtk_widget_destroy(window_confirmer_supprimer_utilisateur);
+}
+void
+on_radiobutton_femme_modifier_bs_toggled
+                                        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if(gtk_toggle_button_get_active(GTK_RADIO_BUTTON (togglebutton)))
+	genre=2;
+}
+
+
+void
+on_radiobutton_homme_modifier_bs_toggled
+                                        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if(gtk_toggle_button_get_active(GTK_RADIO_BUTTON (togglebutton)))
+	genre=1;
+}
+
+void load_user_data(const char *cin, GtkWidget *window_modifier_utilisateur) {
+    user p = get_user_data(cin);
+
+ GtkWidget *input1, *input2, *input4, *input5, *input6, *input7, *input8, *input9, *input10, *input11;
+   GtkWidget *window_ajouter_utilisateur;
+input1=lookup_widget(window_modifier_utilisateur,"entry_nom_modifier_bs");
+input2=lookup_widget(window_modifier_utilisateur,"entry_prenom_modifier_bs");
+input4=lookup_widget(window_modifier_utilisateur,"spinbutton_jour_modifier_bs");
+input5=lookup_widget(window_modifier_utilisateur,"spinbutton_mois_modifier_bs");
+input6=lookup_widget(window_modifier_utilisateur,"spinbutton_annee_modifier_bs");
+input7=lookup_widget(window_modifier_utilisateur,"entry_cin_modifier_bs");
+input8=lookup_widget(window_modifier_utilisateur,"entry_num_modifier_bs");
+input9=lookup_widget(window_modifier_utilisateur,"comboboxentry_role_mod_bs");
+input10=lookup_widget(window_modifier_utilisateur,"radiobutton_femme_modifier_bs");
+input11=lookup_widget(window_modifier_utilisateur,"radiobutton_homme_modifier_bs");
+
+
+    gtk_entry_set_text(GTK_ENTRY(input1), p.nom);
+    gtk_entry_set_text(GTK_ENTRY(input2), p.prenom);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(input4), p.jour);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(input5), p.mois);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(input6), p.annee);
+    gtk_entry_set_text(GTK_ENTRY(input7), p.cin);
+    gtk_entry_set_text(GTK_ENTRY(input8), p.num);
+gtk_combo_box_set_active(GTK_COMBO_BOX(input9),get_Role_index(p.role));
+    
+
+if (strcmp(p.sexe,"Homme")==0){
+gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(input11),TRUE);
+}
+else{
+gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(input10),TRUE);
+}
+}
+
+void
+on_button_modifier_bs_clicked          (GtkWidget       *objet,
+                                        gpointer         user_data)
+{
+GtkWidget *window_modifier_utilisateur;
+GtkWidget *window_gestion_utilisateur;
+
+window_gestion_utilisateur=lookup_widget(objet,"window_gestion_utilisateur");
+
+gtk_widget_destroy(window_gestion_utilisateur);
+window_modifier_utilisateur;
+
+gtk_widget_show(window_modifier_utilisateur);
+load_user_data(selected_cin,window_modifier_utilisateur);
+}
+
+
+
+
+
+
+
+
+void
+on_button_enregistrer_modifier_bs_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+    GtkWidget *input1, *input2, *input4, *input5, *input6, *input7, *input8, *input9;
+
+input1=lookup_widget(objet_graphique,"entry_nom_modifier_bs");
+input2=lookup_widget(objet_graphique,"entry_prenom_modifier_bs");
+input4=lookup_widget(objet_graphique,"spinbutton_jour_modifier_bs");
+input5=lookup_widget(objet_graphique,"spinbutton_mois_modifier_bs");
+input6=lookup_widget(objet_graphique,"spinbutton_annee_modifier_bs");
+//input7=lookup_widget(objet_graphique,"entry_cin_modifier_bs");
+input8=lookup_widget(objet_graphique,"entry_num_modifier_bs");
+input9=lookup_widget(objet_graphique,"comboboxentry_role_mod_bs");
+
+    user p;
+    if(genre==1)
+    strcpy(p.sexe,"Homme");
+    if(genre==2)
+    strcpy(p.sexe,"Femme");
+    strcpy(p.cin, selected_cin);
+    strcpy(p.nom, gtk_entry_get_text(GTK_ENTRY(input1)));
+    strcpy(p.prenom, gtk_entry_get_text(GTK_ENTRY(input2)));
+    p.jour = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(input4));
+    p.mois = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(input5));
+    p.annee = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(input6));
+    strcpy(p.num, gtk_entry_get_text(GTK_ENTRY(input8)));
+    strcpy(p.role,gtk_combo_box_get_active_text(GTK_COMBO_BOX(input9))); 
+    
+
+    
+
+    modifier_utilisateur(p);
+}
+
+
+
+void
+on_button_quitter_modifier_bs_clicked  (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+GtkWidget *window_modifier_utilisateur=lookup_widget(objet_graphique,"window_modifier_utilisateur");
+	gtk_widget_destroy(window_modifier_utilisateur);
+	GtkWidget *window_gestion_utilisateur=create_window_gestion_utilisateur();
+	gtk_widget_show (window_gestion_utilisateur);
+}
+
+void on_window_pourcentage_utilisateur_shown(GtkWidget *widget, gpointer user_data) {
+    // Inside this function, you can calculate the percentage and update labels
+    double percentage_men, percentage_women;
+    calculate_gender_percentage(&percentage_men, &percentage_women);
+
+    // Assuming you have labels in the percentage window
+    GtkWidget *label_hommes_utilisateurs = lookup_widget(widget, "label_hommes_utilisateurs");
+    GtkWidget *label_femme_utilisateurs = lookup_widget(widget, "label_femme_utilisateurs");
+
+    // Update the labels with the calculated percentages
+    char men_percentage_text[50];
+    char women_percentage_text[50];
+
+    snprintf(men_percentage_text, sizeof(men_percentage_text), " %.2f%%", percentage_men);
+    snprintf(women_percentage_text, sizeof(women_percentage_text), " %.2f%%", percentage_women);
+
+    gtk_label_set_text(GTK_LABEL(label_hommes_utilisateurs), men_percentage_text);
+    gtk_label_set_text(GTK_LABEL(label_femme_utilisateurs), women_percentage_text);
+}
+
+
+void
+on_button_poucentage_utilisateur_clicked
+                                        (GtkWidget       *objet,
+                                        gpointer         user_data)
+{
+GtkWidget *window_pourcentage_utilisateur = create_window_pourcentage_utilisateur();
+
+    if (window_pourcentage_utilisateur == NULL) {
+        g_print("Error: window_pourcentage_utilisateur is NULL\n");
+        return;
+    }
+
+    // Connect a callback function to handle when the window is shown
+    g_signal_connect(window_pourcentage_utilisateur, "show", G_CALLBACK(on_window_pourcentage_utilisateur_shown), NULL);
+
+    // Show the window
+    gtk_widget_show(window_pourcentage_utilisateur);
+}
+
+void
+on_button_quitter_pourcentage_utilisateur_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+GtkWidget *window_pourcentage_utilisateur=lookup_widget(objet_graphique,"window_pourcentage_utilisateur");
+	gtk_widget_destroy(window_pourcentage_utilisateur);
+	
+}
+
+void
+on_button_retouradmin_user_clicked     (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+GtkWidget *window_gestion_utilisateur=lookup_widget(objet_graphique,"window_gestion_utilisateur");
+	gtk_widget_hide(window_gestion_utilisateur);
+	GtkWidget *window_bienvenue=create_window_bienvenue();
+	gtk_widget_show (window_bienvenue);
+}
+
