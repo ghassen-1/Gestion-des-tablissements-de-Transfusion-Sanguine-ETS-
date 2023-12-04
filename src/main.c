@@ -36,6 +36,8 @@ main (int argc, char *argv[])
   GtkWidget *window_modifier_RDV;
   GtkWidget *affichage_don_;
   GtkWidget *window2;
+  GtkWidget *window_ajouter_poch;
+  GtkWidget *window_gestion_poch;
 
 #ifdef ENABLE_NLS
   bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);

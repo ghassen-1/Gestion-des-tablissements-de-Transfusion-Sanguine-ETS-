@@ -405,3 +405,56 @@ on_button_quitter_pourcentage_utilisateur_clicked
 void
 on_button_retouradmin_user_clicked     (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
+/////////////////////////////////////////////////khalil//////////////////////////////////////////////////////
+void
+on_button_ajouter_appliquer_poch_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_retour_ajouter_poch_clicked  (GtkWidget     *objet_graphique,
+                                        gpointer         user_data);
+
+
+
+void
+on_button_ajout_poch_clicked           (GtkWidget     *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_modifier_poch_clicked       (GtkWidget     *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_afficher_poch_clicked        (GtkWidget     *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_treeview_poch_row_activated         (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void on_button_supprimer_poch_clicked(GtkWidget     *objet_graphique,
+                                        gpointer         user_data);
+
+void on_window_confirmer_supprimer_poch_shown(GtkWidget *objet, gpointer user_data);
+
+void
+on_button_annuler_supprimer_poch_clicked
+                                        (GtkWidget     *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_confirmer_supprimer_poch_clicked
+                                        (GtkWidget     *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_retour_pourcentage_poch_clicked
+                                        (GtkWidget     *objet_graphique,
+                                        gpointer         user_data);
+
+void
+on_button_afficher_pourcentage_clicked (GtkWidget     *objet_graphique,
+                                        gpointer         user_data);

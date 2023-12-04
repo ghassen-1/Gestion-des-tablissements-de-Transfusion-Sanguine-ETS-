@@ -29,3 +29,8 @@ GtkWidget* create_window3 (void);
 GtkWidget* create_window4 (void);
 GtkWidget* create_window5 (void);
 GtkWidget* create_window6 (void);
+GtkWidget* create_window_ajouter_poch (void);
+GtkWidget* create_window_modifier_poch (void);
+GtkWidget* create_window_gestion_poch_de_sang (void);
+GtkWidget* create_window_confirmer_supprimer_poch (void);
+GtkWidget* create_window_afficher_pourcentage (void);

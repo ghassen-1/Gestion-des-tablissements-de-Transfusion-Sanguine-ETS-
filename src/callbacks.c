@@ -22,6 +22,8 @@
 #include "login.c"
 #include "user.c"
 #include "user.h"
+#include "poch.c"
+#include "poch.h"
 
 gchar* selected_id;
 int x=1;
@@ -1785,5 +1787,223 @@ GtkWidget *window_gestion_utilisateur=lookup_widget(objet_graphique,"window_gest
 	gtk_widget_hide(window_gestion_utilisateur);
 	GtkWidget *window_bienvenue=create_window_bienvenue();
 	gtk_widget_show (window_bienvenue);
+}
+///////////////////////////////////////////////khalil//////////////////////////////////////////
+gchar* selected_poch_id;
+void
+on_button_ajouter_appliquer_poch_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+int result;
+poch spin; // Adjusted the struct name to start with a capital letter (typically naming conventions)
+    poch p; // Adjusted the struct name to start with a capital letter (typically naming conventions)
+    GtkWidget *input1, *input2, *input3, *input4 ;
+    char texte[150];
+
+    input2 = lookup_widget(objet_graphique, "comboboxentry_ets_ajout_poch");
+    input3 = lookup_widget(objet_graphique, "comboboxentry_type_sang_ajout_poch");
+    input4 = lookup_widget(objet_graphique, "spinbutton_quantite_poch_ajouter");
+    
+  
+
+    // Check if the widgets are retrieved successfully before getting their values
+   
+        // Using g_strdup to ensure memory safety when dealing with GTK string functions
+       strcpy(p.ets_demandeur, g_strdup(gtk_combo_box_get_active_text(GTK_COMBO_BOX(input2))));
+       strcpy(p.type_sang, g_strdup(gtk_combo_box_get_active_text(GTK_COMBO_BOX(input3))));
+	p.quantite = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(input4));
+        
+      
+	//strcpy(p.id, g_strdup(gtk_entry_get_text(GTK_ENTRY(input5))));
+
+        
+      
+            result = ajouter_poch(p);
+
+	// to close the window ajouter apres lajouter et retourner vers la page de gestion
+	
+}
+
+
+void
+on_button_retour_ajouter_poch_clicked  (GtkWidget     *objet_graphique,
+                                        gpointer         user_data)
+{
+    GtkWidget *window_ajouter_poch = lookup_widget(objet_graphique, "window_ajouter_poch");
+    gtk_widget_destroy(window_ajouter_poch);
+
+    GtkWidget *window_gestion_poch_de_sang = create_window_gestion_poch_de_sang();
+    gtk_widget_show(window_gestion_poch_de_sang);
+
+  
+}
+
+
+
+
+void
+on_button_ajout_poch_clicked           (GtkWidget     *objet_graphique,
+                                        gpointer         user_data)
+{
+  GtkWidget *window_gestion_poch_de_sang = lookup_widget(objet_graphique, "window_gestion_poch_de_sang");
+    gtk_widget_destroy(window_gestion_poch_de_sang);
+
+    GtkWidget *window_ajouter_poch = create_window_ajouter_poch();
+    gtk_widget_show(window_ajouter_poch);
+
+}
+
+
+void
+on_button_modifier_poch_clicked       (GtkWidget     *objet_graphique,
+                                        gpointer         user_data)
+{
+  GtkWidget *window_gestion_poch_de_sang = lookup_widget(objet_graphique, "window_gestion_poch_de_sang");
+    gtk_widget_destroy(window_gestion_poch_de_sang);
+
+    GtkWidget *window_modifier_poch = create_window_modifier_poch();
+    gtk_widget_show(window_modifier_poch);
+}
+
+
+
+void
+on_button_afficher_poch_clicked        (GtkWidget     *objet_graphique,
+                                        gpointer         user_data)
+{
+        GtkWidget *treeview_poch,*w1;
+	GtkWidget *window_gestion_poch_de_sang;
+	w1=lookup_widget(objet_graphique,"window_gestion_poch_de_sang");
+	window_gestion_poch_de_sang=create_window_gestion_poch_de_sang();
+	gtk_widget_show(window_gestion_poch_de_sang);
+	gtk_widget_hide(w1);
+	treeview_poch=lookup_widget(window_gestion_poch_de_sang,"treeview_poch");
+	afficher_poch(treeview_poch);
+
+}
+
+
+void
+on_treeview_poch_row_activated         (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data)
+{
+  GtkTreeIter iter;
+    gchar* id;
+    GtkTreeModel *model = gtk_tree_view_get_model(treeview);
+//id_demande
+    if (gtk_tree_model_get_iter(model, &iter, path)) {
+        gtk_tree_model_get(GTK_LIST_STORE(model), &iter, 0, &id, -1);
+       selected_poch_id = strdup(id); // Copy the selected ID
+        // You can now call a function to open the deletion window or store this ID for later use.
+    }
+ 
+}
+
+
+
+
+
+
+void on_button_supprimer_poch_clicked(GtkWidget     *objet_graphique,
+                                        gpointer         user_data) {
+
+GtkWidget *window_confirmer_supprimer_poch = create_window_confirmer_supprimer_poch();
+
+    // Check if window_supprimer_ETS is NULL before showing it
+    if (window_confirmer_supprimer_poch == NULL) {
+        g_print("Error: window_confirmer_supprimer_demande_poch is NULL\n");
+        return;
+    }
+    g_signal_connect(window_confirmer_supprimer_poch, "show", G_CALLBACK(on_window_confirmer_supprimer_poch_shown), NULL);
+
+    gtk_widget_show(window_confirmer_supprimer_poch);
+}
+
+
+
+void
+on_button_annuler_supprimer_poch_clicked
+                                        (GtkWidget     *objet_graphique,
+                                        gpointer         user_data)
+{
+GtkWidget *window_confirmer_supprimer_poch = lookup_widget(objet_graphique, "window_confirmer_supprimer_poch");
+    gtk_widget_destroy(window_confirmer_supprimer_poch);
+
+    GtkWidget *window_gestion_poch_de_sang = create_window_gestion_poch_de_sang();
+    gtk_widget_show(window_gestion_poch_de_sang);
+}
+
+
+void on_window_confirmer_supprimer_poch_shown(GtkWidget *objet, gpointer user_data)
+{
+    GtkWidget *output = lookup_widget(objet, "label_supprimer_poch");
+    gtk_label_set_text(GTK_LABEL(output), selected_poch_id);
+}
+
+void
+on_button_confirmer_supprimer_poch_clicked
+                                        (GtkWidget     *objet_graphique,
+                                        gpointer         user_data)
+{
+    GtkWidget *treeview_poch;
+    GtkWidget *window_gestion_poch_de_sang = create_window_gestion_poch_de_sang();
+
+    // Check if window_utilisateurs is NULL before proceeding
+    if (window_gestion_poch_de_sang == NULL) {
+        g_print("Error: window_poch is NULL\n");
+        return;
+    }
+
+    treeview_poch = lookup_widget(window_gestion_poch_de_sang, "treeview_poch");
+
+    poch p;
+    strcpy(p.id_demande, selected_poch_id);
+
+    
+
+        supprimer_poch(p);
+        // Update the tree view after deleting the user
+        afficher_poch(treeview_poch);
+
+        GtkWidget *window_confirmer_supprimer_poch = lookup_widget(objet_graphique, "window_confirmer_supprimer_poch");
+        gtk_widget_destroy(window_confirmer_supprimer_poch);
+      
+}
+
+
+
+
+void
+on_button_retour_pourcentage_poch_clicked
+                                        (GtkWidget     *objet_graphique,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_button_afficher_pourcentage_clicked (GtkWidget     *objet_graphique,
+                                        gpointer         user_data)
+{/*
+GtkWidget *window_principal = GTK_WIDGET(user_data);
+
+    // Récupérer l'étiquette où afficher le pourcentage
+    GtkWidget *label_pourcentage = lookup_widget(objet_graphique, "label_supprimer_poch");
+
+    // Calculer le pourcentage (par exemple, 75%)
+    double pourcentage = calculer_pourcentage(); // Assurez-vous d'avoir votre propre fonction pour récupérer le pourcentage
+
+    // Mettre le pourcentage dans une chaîne de caractères
+    gchar *texte_pourcentage = g_strdup_printf("Pourcentage : %.2f%%", pourcentage);
+
+    // Mettre à jour l'étiquette avec le pourcentage
+    gtk_label_set_text(GTK_LABEL(label_pourcentage), texte_pourcentage);
+
+    // Libérer la mémoire allouée pour le texte du pourcentage
+    g_free(texte_pourcentage);*/
 }
 

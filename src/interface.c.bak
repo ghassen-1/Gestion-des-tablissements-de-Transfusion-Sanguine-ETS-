@@ -5585,7 +5585,7 @@ create_window4 (void)
   gtk_fixed_put (GTK_FIXED (fixed33), eventbox189, 384, 216);
   gtk_widget_set_size_request (eventbox189, 304, 32);
 
-  label_Ap = gtk_label_new (_("1"));
+  label_Ap = gtk_label_new ("");
   gtk_widget_show (label_Ap);
   gtk_container_add (GTK_CONTAINER (eventbox189), label_Ap);
   gtk_widget_set_size_request (label_Ap, 304, 32);
@@ -5595,7 +5595,7 @@ create_window4 (void)
   gtk_fixed_put (GTK_FIXED (fixed33), eventbox190, 384, 248);
   gtk_widget_set_size_request (eventbox190, 296, 32);
 
-  label_Am = gtk_label_new (_("1"));
+  label_Am = gtk_label_new ("");
   gtk_widget_show (label_Am);
   gtk_container_add (GTK_CONTAINER (eventbox190), label_Am);
   gtk_widget_set_size_request (label_Am, 296, 32);
@@ -5605,7 +5605,7 @@ create_window4 (void)
   gtk_fixed_put (GTK_FIXED (fixed33), eventbox191, 392, 288);
   gtk_widget_set_size_request (eventbox191, 288, 32);
 
-  label_Bp = gtk_label_new (_("1"));
+  label_Bp = gtk_label_new ("");
   gtk_widget_show (label_Bp);
   gtk_container_add (GTK_CONTAINER (eventbox191), label_Bp);
   gtk_widget_set_size_request (label_Bp, 288, 32);
@@ -5615,7 +5615,7 @@ create_window4 (void)
   gtk_fixed_put (GTK_FIXED (fixed33), eventbox192, 400, 320);
   gtk_widget_set_size_request (eventbox192, 272, 32);
 
-  label_Bm = gtk_label_new (_("1"));
+  label_Bm = gtk_label_new ("");
   gtk_widget_show (label_Bm);
   gtk_container_add (GTK_CONTAINER (eventbox192), label_Bm);
   gtk_widget_set_size_request (label_Bm, 272, 32);
@@ -5625,7 +5625,7 @@ create_window4 (void)
   gtk_fixed_put (GTK_FIXED (fixed33), eventbox193, 400, 352);
   gtk_widget_set_size_request (eventbox193, 272, 32);
 
-  label_Op = gtk_label_new (_("1"));
+  label_Op = gtk_label_new ("");
   gtk_widget_show (label_Op);
   gtk_container_add (GTK_CONTAINER (eventbox193), label_Op);
   gtk_widget_set_size_request (label_Op, 272, 32);
@@ -5635,7 +5635,7 @@ create_window4 (void)
   gtk_fixed_put (GTK_FIXED (fixed33), eventbox194, 408, 392);
   gtk_widget_set_size_request (eventbox194, 264, 32);
 
-  label_Om = gtk_label_new (_("1"));
+  label_Om = gtk_label_new ("");
   gtk_widget_show (label_Om);
   gtk_container_add (GTK_CONTAINER (eventbox194), label_Om);
   gtk_widget_set_size_request (label_Om, 264, 32);
@@ -5645,7 +5645,7 @@ create_window4 (void)
   gtk_fixed_put (GTK_FIXED (fixed33), eventbox195, 400, 424);
   gtk_widget_set_size_request (eventbox195, 272, 32);
 
-  label_ABp = gtk_label_new (_("1"));
+  label_ABp = gtk_label_new ("");
   gtk_widget_show (label_ABp);
   gtk_container_add (GTK_CONTAINER (eventbox195), label_ABp);
   gtk_widget_set_size_request (label_ABp, 272, 32);
@@ -5655,7 +5655,7 @@ create_window4 (void)
   gtk_fixed_put (GTK_FIXED (fixed33), eventbox196, 320, 488);
   gtk_widget_set_size_request (eventbox196, 440, 32);
 
-  label_min_quantity = gtk_label_new (_("1"));
+  label_min_quantity = gtk_label_new ("");
   gtk_widget_show (label_min_quantity);
   gtk_container_add (GTK_CONTAINER (eventbox196), label_min_quantity);
   gtk_widget_set_size_request (label_min_quantity, 440, 32);
@@ -5717,7 +5717,7 @@ create_window4 (void)
   gtk_fixed_put (GTK_FIXED (fixed33), image75, 0, 0);
   gtk_widget_set_size_request (image75, 1160, 776);
 
-  label274 = gtk_label_new (_("tache de calcule de don :"));
+  label274 = gtk_label_new (_("Quantit\303\251 disponible de chaque type de sang :"));
   gtk_widget_show (label274);
   gtk_fixed_put (GTK_FIXED (fixed33), label274, 400, 176);
   gtk_widget_set_size_request (label274, 328, 32);
@@ -6169,5 +6169,507 @@ create_window6 (void)
   GLADE_HOOKUP_OBJECT (window6, retour_supp2, "retour_supp2");
 
   return window6;
+}
+
+GtkWidget*
+create_window_ajouter_poch (void)
+{
+  GtkWidget *window_ajouter_poch;
+  GtkWidget *fixed37;
+  GtkObject *spinbutton_quantite_poch_ajouter_adj;
+  GtkWidget *spinbutton_quantite_poch_ajouter;
+  GtkWidget *label288;
+  GtkWidget *label290;
+  GtkWidget *label289;
+  GtkWidget *comboboxentry_ets_ajout_poch;
+  GtkWidget *comboboxentry_type_sang_ajout_poch;
+  GtkWidget *button_ajouter_appliquer_poch;
+  GtkWidget *alignment68;
+  GtkWidget *hbox65;
+  GtkWidget *image87;
+  GtkWidget *label291;
+  GtkWidget *button_retour_ajouter_poch;
+  GtkWidget *alignment69;
+  GtkWidget *hbox66;
+  GtkWidget *image88;
+  GtkWidget *label292;
+
+  window_ajouter_poch = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title (GTK_WINDOW (window_ajouter_poch), _("window_ajouter_poch"));
+
+  fixed37 = gtk_fixed_new ();
+  gtk_widget_show (fixed37);
+  gtk_container_add (GTK_CONTAINER (window_ajouter_poch), fixed37);
+
+  spinbutton_quantite_poch_ajouter_adj = gtk_adjustment_new (1, 0, 100, 1, 10, 10);
+  spinbutton_quantite_poch_ajouter = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton_quantite_poch_ajouter_adj), 1, 0);
+  gtk_widget_show (spinbutton_quantite_poch_ajouter);
+  gtk_fixed_put (GTK_FIXED (fixed37), spinbutton_quantite_poch_ajouter, 336, 248);
+  gtk_widget_set_size_request (spinbutton_quantite_poch_ajouter, 60, 27);
+
+  label288 = gtk_label_new (_("Etablissement"));
+  gtk_widget_show (label288);
+  gtk_fixed_put (GTK_FIXED (fixed37), label288, 120, 144);
+  gtk_widget_set_size_request (label288, 137, 16);
+
+  label290 = gtk_label_new (_("Type de sang"));
+  gtk_widget_show (label290);
+  gtk_fixed_put (GTK_FIXED (fixed37), label290, 128, 200);
+  gtk_widget_set_size_request (label290, 129, 16);
+
+  label289 = gtk_label_new (_("Quantite"));
+  gtk_widget_show (label289);
+  gtk_fixed_put (GTK_FIXED (fixed37), label289, 152, 256);
+  gtk_widget_set_size_request (label289, 88, 16);
+
+  comboboxentry_ets_ajout_poch = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (comboboxentry_ets_ajout_poch);
+  gtk_fixed_put (GTK_FIXED (fixed37), comboboxentry_ets_ajout_poch, 280, 136);
+  gtk_widget_set_size_request (comboboxentry_ets_ajout_poch, 189, 29);
+
+  comboboxentry_type_sang_ajout_poch = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (comboboxentry_type_sang_ajout_poch);
+  gtk_fixed_put (GTK_FIXED (fixed37), comboboxentry_type_sang_ajout_poch, 280, 192);
+  gtk_widget_set_size_request (comboboxentry_type_sang_ajout_poch, 189, 29);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxentry_type_sang_ajout_poch), _("O-"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxentry_type_sang_ajout_poch), _("O+"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxentry_type_sang_ajout_poch), _("A-"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxentry_type_sang_ajout_poch), _("A+"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxentry_type_sang_ajout_poch), _("B-"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxentry_type_sang_ajout_poch), _("B+"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxentry_type_sang_ajout_poch), _("AB-"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxentry_type_sang_ajout_poch), _("AB+"));
+
+  button_ajouter_appliquer_poch = gtk_button_new ();
+  gtk_widget_show (button_ajouter_appliquer_poch);
+  gtk_fixed_put (GTK_FIXED (fixed37), button_ajouter_appliquer_poch, 240, 336);
+  gtk_widget_set_size_request (button_ajouter_appliquer_poch, 104, 40);
+
+  alignment68 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment68);
+  gtk_container_add (GTK_CONTAINER (button_ajouter_appliquer_poch), alignment68);
+
+  hbox65 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox65);
+  gtk_container_add (GTK_CONTAINER (alignment68), hbox65);
+
+  image87 = gtk_image_new_from_stock ("gtk-add", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image87);
+  gtk_box_pack_start (GTK_BOX (hbox65), image87, FALSE, FALSE, 0);
+
+  label291 = gtk_label_new_with_mnemonic (_("Ajouter"));
+  gtk_widget_show (label291);
+  gtk_box_pack_start (GTK_BOX (hbox65), label291, FALSE, FALSE, 0);
+
+  button_retour_ajouter_poch = gtk_button_new ();
+  gtk_widget_show (button_retour_ajouter_poch);
+  gtk_fixed_put (GTK_FIXED (fixed37), button_retour_ajouter_poch, 408, 336);
+  gtk_widget_set_size_request (button_retour_ajouter_poch, 96, 40);
+
+  alignment69 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment69);
+  gtk_container_add (GTK_CONTAINER (button_retour_ajouter_poch), alignment69);
+
+  hbox66 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox66);
+  gtk_container_add (GTK_CONTAINER (alignment69), hbox66);
+
+  image88 = gtk_image_new_from_stock ("gtk-undo", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image88);
+  gtk_box_pack_start (GTK_BOX (hbox66), image88, FALSE, FALSE, 0);
+
+  label292 = gtk_label_new_with_mnemonic (_("Retour"));
+  gtk_widget_show (label292);
+  gtk_box_pack_start (GTK_BOX (hbox66), label292, FALSE, FALSE, 0);
+
+  g_signal_connect ((gpointer) button_ajouter_appliquer_poch, "clicked",
+                    G_CALLBACK (on_button_ajouter_appliquer_poch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) button_retour_ajouter_poch, "clicked",
+                    G_CALLBACK (on_button_retour_ajouter_poch_clicked),
+                    NULL);
+
+  /* Store pointers to all widgets, for use by lookup_widget(). */
+  GLADE_HOOKUP_OBJECT_NO_REF (window_ajouter_poch, window_ajouter_poch, "window_ajouter_poch");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, fixed37, "fixed37");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, spinbutton_quantite_poch_ajouter, "spinbutton_quantite_poch_ajouter");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, label288, "label288");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, label290, "label290");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, label289, "label289");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, comboboxentry_ets_ajout_poch, "comboboxentry_ets_ajout_poch");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, comboboxentry_type_sang_ajout_poch, "comboboxentry_type_sang_ajout_poch");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, button_ajouter_appliquer_poch, "button_ajouter_appliquer_poch");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, alignment68, "alignment68");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, hbox65, "hbox65");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, image87, "image87");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, label291, "label291");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, button_retour_ajouter_poch, "button_retour_ajouter_poch");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, alignment69, "alignment69");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, hbox66, "hbox66");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, image88, "image88");
+  GLADE_HOOKUP_OBJECT (window_ajouter_poch, label292, "label292");
+
+  return window_ajouter_poch;
+}
+
+GtkWidget*
+create_window_modifier_poch (void)
+{
+  GtkWidget *window_modifier_poch;
+  GtkWidget *fixed38;
+  GtkWidget *comboboxentry12;
+  GtkWidget *comboboxentry13;
+  GtkWidget *label293;
+  GtkObject *spinbutton29_adj;
+  GtkWidget *spinbutton29;
+  GtkWidget *button52;
+  GtkWidget *button53;
+  GtkWidget *label295;
+  GtkWidget *label294;
+
+  window_modifier_poch = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title (GTK_WINDOW (window_modifier_poch), _("window9"));
+
+  fixed38 = gtk_fixed_new ();
+  gtk_widget_show (fixed38);
+  gtk_container_add (GTK_CONTAINER (window_modifier_poch), fixed38);
+
+  comboboxentry12 = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (comboboxentry12);
+  gtk_fixed_put (GTK_FIXED (fixed38), comboboxentry12, 264, 128);
+  gtk_widget_set_size_request (comboboxentry12, 189, 29);
+
+  comboboxentry13 = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (comboboxentry13);
+  gtk_fixed_put (GTK_FIXED (fixed38), comboboxentry13, 272, 192);
+  gtk_widget_set_size_request (comboboxentry13, 189, 29);
+
+  label293 = gtk_label_new (_("label293"));
+  gtk_widget_show (label293);
+  gtk_fixed_put (GTK_FIXED (fixed38), label293, 136, 136);
+  gtk_widget_set_size_request (label293, 57, 17);
+
+  spinbutton29_adj = gtk_adjustment_new (1, 0, 100, 1, 10, 10);
+  spinbutton29 = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton29_adj), 1, 0);
+  gtk_widget_show (spinbutton29);
+  gtk_fixed_put (GTK_FIXED (fixed38), spinbutton29, 328, 256);
+  gtk_widget_set_size_request (spinbutton29, 60, 27);
+
+  button52 = gtk_button_new_with_mnemonic (_("button52"));
+  gtk_widget_show (button52);
+  gtk_fixed_put (GTK_FIXED (fixed38), button52, 240, 360);
+  gtk_widget_set_size_request (button52, 74, 29);
+
+  button53 = gtk_button_new_with_mnemonic (_("button53"));
+  gtk_widget_show (button53);
+  gtk_fixed_put (GTK_FIXED (fixed38), button53, 416, 360);
+  gtk_widget_set_size_request (button53, 74, 29);
+
+  label295 = gtk_label_new (_("label295"));
+  gtk_widget_show (label295);
+  gtk_fixed_put (GTK_FIXED (fixed38), label295, 176, 264);
+  gtk_widget_set_size_request (label295, 57, 17);
+
+  label294 = gtk_label_new (_("label294"));
+  gtk_widget_show (label294);
+  gtk_fixed_put (GTK_FIXED (fixed38), label294, 152, 192);
+  gtk_widget_set_size_request (label294, 57, 17);
+
+  /* Store pointers to all widgets, for use by lookup_widget(). */
+  GLADE_HOOKUP_OBJECT_NO_REF (window_modifier_poch, window_modifier_poch, "window_modifier_poch");
+  GLADE_HOOKUP_OBJECT (window_modifier_poch, fixed38, "fixed38");
+  GLADE_HOOKUP_OBJECT (window_modifier_poch, comboboxentry12, "comboboxentry12");
+  GLADE_HOOKUP_OBJECT (window_modifier_poch, comboboxentry13, "comboboxentry13");
+  GLADE_HOOKUP_OBJECT (window_modifier_poch, label293, "label293");
+  GLADE_HOOKUP_OBJECT (window_modifier_poch, spinbutton29, "spinbutton29");
+  GLADE_HOOKUP_OBJECT (window_modifier_poch, button52, "button52");
+  GLADE_HOOKUP_OBJECT (window_modifier_poch, button53, "button53");
+  GLADE_HOOKUP_OBJECT (window_modifier_poch, label295, "label295");
+  GLADE_HOOKUP_OBJECT (window_modifier_poch, label294, "label294");
+
+  return window_modifier_poch;
+}
+
+GtkWidget*
+create_window_gestion_poch_de_sang (void)
+{
+  GtkWidget *window_gestion_poch_de_sang;
+  GtkWidget *fixed39;
+  GtkWidget *button_ajout_poch;
+  GtkWidget *alignment71;
+  GtkWidget *hbox68;
+  GtkWidget *image90;
+  GtkWidget *label297;
+  GtkWidget *button_modifier_poch;
+  GtkWidget *alignment70;
+  GtkWidget *hbox67;
+  GtkWidget *image89;
+  GtkWidget *label296;
+  GtkWidget *button_supprimer_poch;
+  GtkWidget *alignment73;
+  GtkWidget *hbox70;
+  GtkWidget *image92;
+  GtkWidget *label299;
+  GtkWidget *button_afficher_poch;
+  GtkWidget *alignment72;
+  GtkWidget *hbox69;
+  GtkWidget *image91;
+  GtkWidget *label298;
+  GtkWidget *scrolledwindow5;
+  GtkWidget *treeview_poch;
+  GtkWidget *button_afficher_pourcentage;
+
+  window_gestion_poch_de_sang = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title (GTK_WINDOW (window_gestion_poch_de_sang), _("window_gestion_poch de sang"));
+
+  fixed39 = gtk_fixed_new ();
+  gtk_widget_show (fixed39);
+  gtk_container_add (GTK_CONTAINER (window_gestion_poch_de_sang), fixed39);
+
+  button_ajout_poch = gtk_button_new ();
+  gtk_widget_show (button_ajout_poch);
+  gtk_fixed_put (GTK_FIXED (fixed39), button_ajout_poch, 104, 384);
+  gtk_widget_set_size_request (button_ajout_poch, 122, 32);
+
+  alignment71 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment71);
+  gtk_container_add (GTK_CONTAINER (button_ajout_poch), alignment71);
+
+  hbox68 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox68);
+  gtk_container_add (GTK_CONTAINER (alignment71), hbox68);
+
+  image90 = gtk_image_new_from_stock ("gtk-add", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image90);
+  gtk_box_pack_start (GTK_BOX (hbox68), image90, FALSE, FALSE, 0);
+
+  label297 = gtk_label_new_with_mnemonic (_("Ajouter"));
+  gtk_widget_show (label297);
+  gtk_box_pack_start (GTK_BOX (hbox68), label297, FALSE, FALSE, 0);
+
+  button_modifier_poch = gtk_button_new ();
+  gtk_widget_show (button_modifier_poch);
+  gtk_fixed_put (GTK_FIXED (fixed39), button_modifier_poch, 240, 384);
+  gtk_widget_set_size_request (button_modifier_poch, 112, 32);
+
+  alignment70 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment70);
+  gtk_container_add (GTK_CONTAINER (button_modifier_poch), alignment70);
+
+  hbox67 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox67);
+  gtk_container_add (GTK_CONTAINER (alignment70), hbox67);
+
+  image89 = gtk_image_new_from_stock ("gtk-edit", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image89);
+  gtk_box_pack_start (GTK_BOX (hbox67), image89, FALSE, FALSE, 0);
+
+  label296 = gtk_label_new_with_mnemonic (_("Modifier"));
+  gtk_widget_show (label296);
+  gtk_box_pack_start (GTK_BOX (hbox67), label296, FALSE, FALSE, 0);
+
+  button_supprimer_poch = gtk_button_new ();
+  gtk_widget_show (button_supprimer_poch);
+  gtk_fixed_put (GTK_FIXED (fixed39), button_supprimer_poch, 480, 384);
+  gtk_widget_set_size_request (button_supprimer_poch, 104, 32);
+
+  alignment73 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment73);
+  gtk_container_add (GTK_CONTAINER (button_supprimer_poch), alignment73);
+
+  hbox70 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox70);
+  gtk_container_add (GTK_CONTAINER (alignment73), hbox70);
+
+  image92 = gtk_image_new_from_stock ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image92);
+  gtk_box_pack_start (GTK_BOX (hbox70), image92, FALSE, FALSE, 0);
+
+  label299 = gtk_label_new_with_mnemonic (_("Supprimer"));
+  gtk_widget_show (label299);
+  gtk_box_pack_start (GTK_BOX (hbox70), label299, FALSE, FALSE, 0);
+
+  button_afficher_poch = gtk_button_new ();
+  gtk_widget_show (button_afficher_poch);
+  gtk_fixed_put (GTK_FIXED (fixed39), button_afficher_poch, 360, 384);
+  gtk_widget_set_size_request (button_afficher_poch, 104, 32);
+
+  alignment72 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment72);
+  gtk_container_add (GTK_CONTAINER (button_afficher_poch), alignment72);
+
+  hbox69 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox69);
+  gtk_container_add (GTK_CONTAINER (alignment72), hbox69);
+
+  image91 = gtk_image_new_from_stock ("gtk-apply", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image91);
+  gtk_box_pack_start (GTK_BOX (hbox69), image91, FALSE, FALSE, 0);
+
+  label298 = gtk_label_new_with_mnemonic (_("Afficher"));
+  gtk_widget_show (label298);
+  gtk_box_pack_start (GTK_BOX (hbox69), label298, FALSE, FALSE, 0);
+
+  scrolledwindow5 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow5);
+  gtk_fixed_put (GTK_FIXED (fixed39), scrolledwindow5, 128, 136);
+  gtk_widget_set_size_request (scrolledwindow5, 480, 224);
+
+  treeview_poch = gtk_tree_view_new ();
+  gtk_widget_show (treeview_poch);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow5), treeview_poch);
+
+  button_afficher_pourcentage = gtk_button_new_with_mnemonic (_("pourcentage"));
+  gtk_widget_show (button_afficher_pourcentage);
+  gtk_fixed_put (GTK_FIXED (fixed39), button_afficher_pourcentage, 600, 384);
+  gtk_widget_set_size_request (button_afficher_pourcentage, 88, 32);
+
+  g_signal_connect ((gpointer) button_ajout_poch, "clicked",
+                    G_CALLBACK (on_button_ajout_poch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) button_modifier_poch, "clicked",
+                    G_CALLBACK (on_button_modifier_poch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) button_supprimer_poch, "clicked",
+                    G_CALLBACK (on_button_supprimer_poch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) button_afficher_poch, "clicked",
+                    G_CALLBACK (on_button_afficher_poch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) treeview_poch, "row_activated",
+                    G_CALLBACK (on_treeview_poch_row_activated),
+                    NULL);
+  g_signal_connect ((gpointer) button_afficher_pourcentage, "clicked",
+                    G_CALLBACK (on_button_afficher_pourcentage_clicked),
+                    NULL);
+
+  /* Store pointers to all widgets, for use by lookup_widget(). */
+  GLADE_HOOKUP_OBJECT_NO_REF (window_gestion_poch_de_sang, window_gestion_poch_de_sang, "window_gestion_poch_de_sang");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, fixed39, "fixed39");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, button_ajout_poch, "button_ajout_poch");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, alignment71, "alignment71");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, hbox68, "hbox68");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, image90, "image90");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, label297, "label297");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, button_modifier_poch, "button_modifier_poch");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, alignment70, "alignment70");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, hbox67, "hbox67");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, image89, "image89");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, label296, "label296");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, button_supprimer_poch, "button_supprimer_poch");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, alignment73, "alignment73");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, hbox70, "hbox70");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, image92, "image92");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, label299, "label299");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, button_afficher_poch, "button_afficher_poch");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, alignment72, "alignment72");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, hbox69, "hbox69");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, image91, "image91");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, label298, "label298");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, scrolledwindow5, "scrolledwindow5");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, treeview_poch, "treeview_poch");
+  GLADE_HOOKUP_OBJECT (window_gestion_poch_de_sang, button_afficher_pourcentage, "button_afficher_pourcentage");
+
+  return window_gestion_poch_de_sang;
+}
+
+GtkWidget*
+create_window_confirmer_supprimer_poch (void)
+{
+  GtkWidget *window_confirmer_supprimer_poch;
+  GtkWidget *fixed40;
+  GtkWidget *button_confirmer_supprimer_poch;
+  GtkWidget *label300;
+  GtkWidget *button_annuler_supprimer_poch;
+  GtkWidget *label_supprimer_poch;
+
+  window_confirmer_supprimer_poch = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title (GTK_WINDOW (window_confirmer_supprimer_poch), _("window11"));
+
+  fixed40 = gtk_fixed_new ();
+  gtk_widget_show (fixed40);
+  gtk_container_add (GTK_CONTAINER (window_confirmer_supprimer_poch), fixed40);
+
+  button_confirmer_supprimer_poch = gtk_button_new_with_mnemonic (_("Supprimer"));
+  gtk_widget_show (button_confirmer_supprimer_poch);
+  gtk_fixed_put (GTK_FIXED (fixed40), button_confirmer_supprimer_poch, 104, 184);
+  gtk_widget_set_size_request (button_confirmer_supprimer_poch, 88, 40);
+
+  label300 = gtk_label_new (_("Vous \303\251tes sur !"));
+  gtk_widget_show (label300);
+  gtk_fixed_put (GTK_FIXED (fixed40), label300, 32, 80);
+  gtk_widget_set_size_request (label300, 376, 56);
+
+  button_annuler_supprimer_poch = gtk_button_new_with_mnemonic (_("Annuler"));
+  gtk_widget_show (button_annuler_supprimer_poch);
+  gtk_fixed_put (GTK_FIXED (fixed40), button_annuler_supprimer_poch, 224, 184);
+  gtk_widget_set_size_request (button_annuler_supprimer_poch, 90, 37);
+
+  label_supprimer_poch = gtk_label_new ("");
+  gtk_widget_show (label_supprimer_poch);
+  gtk_fixed_put (GTK_FIXED (fixed40), label_supprimer_poch, 192, 144);
+  gtk_widget_set_size_request (label_supprimer_poch, 57, 17);
+
+  g_signal_connect ((gpointer) button_confirmer_supprimer_poch, "clicked",
+                    G_CALLBACK (on_button_confirmer_supprimer_poch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) button_annuler_supprimer_poch, "clicked",
+                    G_CALLBACK (on_button_annuler_supprimer_poch_clicked),
+                    NULL);
+
+  /* Store pointers to all widgets, for use by lookup_widget(). */
+  GLADE_HOOKUP_OBJECT_NO_REF (window_confirmer_supprimer_poch, window_confirmer_supprimer_poch, "window_confirmer_supprimer_poch");
+  GLADE_HOOKUP_OBJECT (window_confirmer_supprimer_poch, fixed40, "fixed40");
+  GLADE_HOOKUP_OBJECT (window_confirmer_supprimer_poch, button_confirmer_supprimer_poch, "button_confirmer_supprimer_poch");
+  GLADE_HOOKUP_OBJECT (window_confirmer_supprimer_poch, label300, "label300");
+  GLADE_HOOKUP_OBJECT (window_confirmer_supprimer_poch, button_annuler_supprimer_poch, "button_annuler_supprimer_poch");
+  GLADE_HOOKUP_OBJECT (window_confirmer_supprimer_poch, label_supprimer_poch, "label_supprimer_poch");
+
+  return window_confirmer_supprimer_poch;
+}
+
+GtkWidget*
+create_window_afficher_pourcentage (void)
+{
+  GtkWidget *window_afficher_pourcentage;
+  GtkWidget *fixed41;
+  GtkWidget *label302;
+  GtkWidget *button_retour_pourcentage_poch;
+  GtkWidget *label_pourcentage;
+
+  window_afficher_pourcentage = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title (GTK_WINDOW (window_afficher_pourcentage), _("pourcentage poch"));
+
+  fixed41 = gtk_fixed_new ();
+  gtk_widget_show (fixed41);
+  gtk_container_add (GTK_CONTAINER (window_afficher_pourcentage), fixed41);
+
+  label302 = gtk_label_new (_("pourcentage"));
+  gtk_widget_show (label302);
+  gtk_fixed_put (GTK_FIXED (fixed41), label302, 32, 88);
+  gtk_widget_set_size_request (label302, 137, 16);
+
+  button_retour_pourcentage_poch = gtk_button_new_with_mnemonic (_("retour"));
+  gtk_widget_show (button_retour_pourcentage_poch);
+  gtk_fixed_put (GTK_FIXED (fixed41), button_retour_pourcentage_poch, 208, 264);
+  gtk_widget_set_size_request (button_retour_pourcentage_poch, 74, 29);
+
+  label_pourcentage = gtk_label_new ("");
+  gtk_widget_show (label_pourcentage);
+  gtk_fixed_put (GTK_FIXED (fixed41), label_pourcentage, 208, 88);
+  gtk_widget_set_size_request (label_pourcentage, 57, 17);
+
+  g_signal_connect ((gpointer) button_retour_pourcentage_poch, "clicked",
+                    G_CALLBACK (on_button_retour_pourcentage_poch_clicked),
+                    NULL);
+
+  /* Store pointers to all widgets, for use by lookup_widget(). */
+  GLADE_HOOKUP_OBJECT_NO_REF (window_afficher_pourcentage, window_afficher_pourcentage, "window_afficher_pourcentage");
+  GLADE_HOOKUP_OBJECT (window_afficher_pourcentage, fixed41, "fixed41");
+  GLADE_HOOKUP_OBJECT (window_afficher_pourcentage, label302, "label302");
+  GLADE_HOOKUP_OBJECT (window_afficher_pourcentage, button_retour_pourcentage_poch, "button_retour_pourcentage_poch");
+  GLADE_HOOKUP_OBJECT (window_afficher_pourcentage, label_pourcentage, "label_pourcentage");
+
+  return window_afficher_pourcentage;
 }
 

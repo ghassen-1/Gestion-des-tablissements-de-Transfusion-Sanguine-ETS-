@@ -607,7 +607,8 @@ callbacks.o: callbacks.c /usr/include/stdc-predef.h ../config.h \
  /usr/include/gtk-2.0/gtk/gtktipsquery.h callbacks.h interface.h \
  support.h /usr/include/libintl.h /usr/include/locale.h \
  /usr/include/x86_64-linux-gnu/bits/locale.h ets.h ets.c donneur.c \
- donneur.h personne.c personne.h login.h login.c user.c user.h
+ donneur.h personne.c personne.h login.h login.c user.c user.h poch.c \
+ poch.h
 
 /usr/include/stdc-predef.h:
 
@@ -1982,3 +1983,7 @@ login.c:
 user.c:
 
 user.h:
+
+poch.c:
+
+poch.h:
