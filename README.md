@@ -3,6 +3,7 @@
 
 
 Ce projet est une application de gestion des demandes de poches de sang pour les établissements médicaux. L'application est développée en langage C avec l'utilisation de GTK pour l'interface graphique.
+Lien Demo : https://drive.google.com/drive/folders/146YzbXa5Tucf_akfzMTtM1EML40zWKvR?usp=sharing
 
 
 ## Objectif du Projet
@@ -27,5 +28,11 @@ et centraliser les informations de dons et de donneurs.
 
 Les contributions sont les bienvenues ! Si vous souhaitez améliorer ce projet, n'hésitez pas à ouvrir une "issue" ou à soumettre une "pull request" avec vos modifications.
 
+<img src="/meta/phosphor-mark-tight-yellow.png" width="128" align="right" />
+
+
+## Screenshots
+
+<img src="/meta/screenshot2.png" />
 
 
