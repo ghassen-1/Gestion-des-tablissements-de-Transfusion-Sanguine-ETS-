@@ -28,11 +28,11 @@ et centraliser les informations de dons et de donneurs.
 
 Les contributions sont les bienvenues ! Si vous souhaitez améliorer ce projet, n'hésitez pas à ouvrir une "issue" ou à soumettre une "pull request" avec vos modifications.
 
-<img src="/meta/phosphor-mark-tight-yellow.png" width="128" align="right" />
+<img src="/meta/ets1" width="128" align="right" />
 
 
 ## Screenshots
 
-<img src="/meta/screenshot2.png" />
+<img src="/meta/ets2.png" />
 
 
